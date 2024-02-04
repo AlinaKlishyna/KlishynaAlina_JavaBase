@@ -173,7 +173,8 @@ public class UsingLoops {
     public static int enterUserInitialValue() {
         Scanner pointLimit = new Scanner(System.in);
         while (!pointLimit.hasNextInt()) {
-            System.out.printf("Value \"%s\" is not a number. Enter again: ", pointLimit.next());
+            System.out.print("Entered value is not a number. Enter again: ");
+            pointLimit.next();
         }
         return pointLimit.nextInt();
     }
