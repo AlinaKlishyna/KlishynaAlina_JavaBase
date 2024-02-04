@@ -16,8 +16,8 @@ public class UsingLoops {
 
         controlNumbersSittingLimits();
 
-        int[] rangeNumbers = rangeBetweenNumbers(initialValue, finalValue);
-        displayNumbersArrayInt(rangeNumbers);
+        int[] rangeNumbers = rangeGenerate(initialValue, finalValue);
+        display(rangeNumbers);
         calculateSumNumbersMethodFor(rangeNumbers);
         calculateSumNumbersMethodWhile(rangeNumbers);
         calculateSumNumbersMethodDoWhile(rangeNumbers);
@@ -135,7 +135,7 @@ public class UsingLoops {
     }
 
 
-    public static int[] rangeBetweenNumbers(int initialLimit, int finalLimit) {
+    public static int[] rangeGenerate(int initialLimit, int finalLimit) {
         int[] rangeNumbers = new int[(finalLimit - initialLimit) - 1];
         int index = 0;
         for (int j = initialLimit + 1; j < finalLimit; j++) {
@@ -167,12 +167,12 @@ public class UsingLoops {
 
     }
 
-    public static void displayNumbersArrayInt(int[] arrayInt) {
+    public static void display(int[] arrayInt) {
         String displayRangeNumbers = "";
         for (int i = 0; i < arrayInt.length; i++) {
-            displayRangeNumbers = displayRangeNumbers + arrayInt[i] + ", ";
-            if (i == arrayInt.length - 1) {
-                displayRangeNumbers = displayRangeNumbers.substring(0, displayRangeNumbers.length() - 2);
+            displayRangeNumbers = displayRangeNumbers + arrayInt[i];
+            if (i < arrayInt.length - 1) {
+                displayRangeNumbers +=", ";
             }
         }
         System.out.println(displayRangeNumbers);
