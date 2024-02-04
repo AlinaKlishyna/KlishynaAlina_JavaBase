@@ -3,13 +3,8 @@ package com.gmail.alinakotova102.drafts;
 import java.util.Scanner;
 
 public class UsingLoops {
-    static int result = 0;
 
     public static void main(String[] args) {
-        //System.out.print("Enter number: ");
-        //int numberUser = enterNumberUser();
-
-        //calculateSumTheirNumberMethodWhile(numberUser);
         int i = 0;
         int j = 0;
         while (i <10){
@@ -31,10 +26,7 @@ public class UsingLoops {
         while (i < rangeNumbers.length) {
             j = 0;
             while (j < String.valueOf(rangeNumbers[i]).length()) {
-
                 sum += Character.getNumericValue(String.valueOf(rangeNumbers[i]).charAt(j));
-
-                //System.out.println(sum);
                 j++;
 
             }
@@ -68,12 +60,6 @@ public class UsingLoops {
         }
         return sumAllNumbers;
     }
-    public static int calculateSumTheirNumberMethodDoWhile(int numberUsingConsole){
-        return result;
-    }
-    public static int calculateSumTheirNumberMethodFor(int numberUsingConsole){
-        return result;
-    }
 
     public static int enterNumberUser(){
         Scanner wholeNumber = new Scanner(System.in);
@@ -93,7 +79,6 @@ public class UsingLoops {
 
         System.out.print("Range between numbers: ");
         //displayNumbersArrayInt(rangeNumbers);
-
         String controlTypeInt;
         int []finalPart = new int[rangeNumbers.length];
         int []startPart = new int[rangeNumbers.length];
