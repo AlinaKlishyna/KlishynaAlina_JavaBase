@@ -31,7 +31,7 @@ public class UsingLoops {
                 String textValuesPartNumbers = String.valueOf(rangeNumbers[indexRangeInt]);
                 if (String.valueOf(Math.abs(rangeNumbers[indexRangeInt])).length() == 1) {
                     sumSeparateNumbers[indexRangeInt] = 1;
-                }else {
+                } else {
                     sumSeparateNumbers[indexRangeInt] += Character.getNumericValue(textValuesPartNumbers.charAt(j));
                 }
             }
@@ -60,8 +60,7 @@ public class UsingLoops {
         while (indexRangeInt < rangeNumbers.length) {
             indexSymbol = 0;
             while (indexSymbol < String.valueOf(rangeNumbers[indexRangeInt]).length()) {
-
-                    sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRangeInt]).charAt(indexSymbol));
+                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRangeInt]).charAt(indexSymbol));
                 indexSymbol++;
             }
             sumSeparateNumbers[indexRangeInt] = sumSymbolsInIndex;
@@ -104,6 +103,9 @@ public class UsingLoops {
                 indexSymbol++;
             } while (indexSymbol < String.valueOf(rangeNumbers[indexRangeInt]).length());
             sumSeparateNumbers[indexRangeInt] = sumSymbolsInIndex;
+            if (String.valueOf(Math.abs(rangeNumbers[indexRangeInt])).length() == 1) {
+                sumSeparateNumbers[indexRangeInt] = 1;
+            }
             indexSymbol = 0;
             sumSymbolsInIndex = 0;
             indexRangeInt++;
