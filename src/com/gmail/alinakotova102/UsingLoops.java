@@ -29,15 +29,12 @@ public class UsingLoops {
         for (int indexRangeInt = 0; indexRangeInt < rangeNumbers.length; indexRangeInt++) {
             for (int j = 0; j < String.valueOf(rangeNumbers[indexRangeInt]).length(); j++) {
                 String textValuesPartNumbers = String.valueOf(rangeNumbers[indexRangeInt]);
-                sumSeparateNumbers[indexRangeInt] += Character.getNumericValue(textValuesPartNumbers.charAt(j));
-                if (rangeNumbers[indexRangeInt] == 0) {
-                    sumSeparateNumbers[indexRangeInt] = 0;
+                if (String.valueOf(Math.abs(rangeNumbers[indexRangeInt])).length() == 1) {
+                    sumSeparateNumbers[indexRangeInt] = 1;
+                }else {
+                    sumSeparateNumbers[indexRangeInt] += Character.getNumericValue(textValuesPartNumbers.charAt(j));
                 }
             }
-            if (String.valueOf(rangeNumbers[indexRangeInt]).length() == 1) {
-                sumSeparateNumbers[indexRangeInt] = 1;
-            }
-
             String controlTypeInt;
             if (sumSeparateNumbers[indexRangeInt] == 0 || rangeNumbers[indexRangeInt] == 0) {
                 controlTypeInt = "By zero!";
@@ -50,7 +47,6 @@ public class UsingLoops {
                     controlTypeInt = "Fraction!";
                 }
             }
-
             System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], controlTypeInt);
         }
         System.out.println("Count of whole numbers - " + countWholeNumbers);
