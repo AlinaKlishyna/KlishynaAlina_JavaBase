@@ -30,18 +30,27 @@ public class UsingLoops {
             for (int j = 0; j < String.valueOf(rangeNumbers[indexRangeInt]).length(); j++) {
                 String textValuesPartNumbers = String.valueOf(rangeNumbers[indexRangeInt]);
                 sumSeparateNumbers[indexRangeInt] += Character.getNumericValue(textValuesPartNumbers.charAt(j));
+                if (rangeNumbers[indexRangeInt] == 0) {
+                    sumSeparateNumbers[indexRangeInt] = 0;
+                }
             }
             if (String.valueOf(rangeNumbers[indexRangeInt]).length() == 1) {
                 sumSeparateNumbers[indexRangeInt] = 1;
             }
 
             String controlTypeInt;
-            if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
-                controlTypeInt = "Whole!";
-                countWholeNumbers++;
+            if (sumSeparateNumbers[indexRangeInt] == 0 || rangeNumbers[indexRangeInt] == 0) {
+                controlTypeInt = "By zero!";
+                sumSeparateNumbers[indexRangeInt] = 0;
             } else {
-                controlTypeInt = "Fraction!";
+                if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
+                    controlTypeInt = "Whole!";
+                    countWholeNumbers++;
+                } else {
+                    controlTypeInt = "Fraction!";
+                }
             }
+
             System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], controlTypeInt);
         }
         System.out.println("Count of whole numbers - " + countWholeNumbers);
@@ -67,11 +76,16 @@ public class UsingLoops {
         System.out.println("\nMethod 2: \"While\"");
         int countWholeNumbers = 0;
         while (indexRangeInt < sumSeparateNumbers.length) {
-            if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
-                controlTypeInt = "Whole!";
-                countWholeNumbers++;
+            if (sumSeparateNumbers[indexRangeInt] == 0 || rangeNumbers[indexRangeInt] == 0) {
+                controlTypeInt = "By zero!";
+                sumSeparateNumbers[indexRangeInt] = 0;
             } else {
-                controlTypeInt = "Fraction!";
+                if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
+                    controlTypeInt = "Whole!";
+                    countWholeNumbers++;
+                } else {
+                    controlTypeInt = "Fraction!";
+                }
             }
             System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], controlTypeInt);
             indexRangeInt++;
@@ -100,11 +114,16 @@ public class UsingLoops {
         System.out.println("\nMethod 3: \"Do-While\"");
         int countWholeNumbers = 0;
         do {
-            if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
-                controlTypeInt = "Whole!";
-                countWholeNumbers++;
+            if (sumSeparateNumbers[indexRangeInt] == 0 || rangeNumbers[indexRangeInt] == 0) {
+                controlTypeInt = "By zero!";
+                sumSeparateNumbers[indexRangeInt] = 0;
             } else {
-                controlTypeInt = "Fraction!";
+                if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
+                    controlTypeInt = "Whole!";
+                    countWholeNumbers++;
+                } else {
+                    controlTypeInt = "Fraction!";
+                }
             }
             System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], controlTypeInt);
             indexRangeInt++;
@@ -125,7 +144,7 @@ public class UsingLoops {
     }
 
     public static void controlNumbersSittingLimits() {
-        while (initialValue == finalValue || Math.abs(finalValue - initialValue) == 1 || Math.abs(initialValue - finalValue) == 1) {
+        while (Math.abs(finalValue - initialValue) <= 1) {
             System.out.print("There is no range of numbers between numbers!\n");
             if (finalValue > initialValue) {
                 System.out.printf("Enter the larger value of %s(%d): ", "Point B", finalValue);
