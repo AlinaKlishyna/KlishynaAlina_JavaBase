@@ -17,6 +17,7 @@ public class UsingLoops {
         controlNumbersSittingLimits();
 
         int[] rangeNumbers = rangeBetweenNumbers(initialValue, finalValue);
+        displayNumbersArrayInt(rangeNumbers);
         calculateSumNumbersMethodFor(rangeNumbers);
         calculateSumNumbersMethodWhile(rangeNumbers);
         calculateSumNumbersMethodDoWhile(rangeNumbers);
@@ -141,7 +142,6 @@ public class UsingLoops {
             rangeNumbers[index++] = j;
         }
         System.out.print("Range between numbers: ");
-        displayNumbersArrayInt(rangeNumbers);
         return rangeNumbers;
     }
 
