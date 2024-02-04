@@ -14,7 +14,6 @@ public class UsingLoops {
         System.out.print("Enter the point B: ");
         finalValue = enterUserInitialValue();
 
-        controlNumbersNegativeValues();
         controlNumbersSittingLimits();
 
         int[] rangeNumbers = rangeBetweenNumbers(initialValue, finalValue);
@@ -123,18 +122,6 @@ public class UsingLoops {
         System.out.print("Range between numbers: ");
         displayNumbersArrayInt(rangeNumbers);
         return rangeNumbers;
-    }
-
-    public static void controlNumbersNegativeValues() {
-        while (finalValue <= 0 || initialValue <= 0) {
-            if (finalValue <= 0) {
-                System.out.printf("You entered a negative number %s(%d). Enter a number starting from 1: ", "Point B", finalValue);
-                finalValue = enterUserInitialValue();
-            } else {
-                System.out.printf("You entered a negative number %s(%d). Enter a number starting from 1: ", "Point A", initialValue);
-                initialValue = enterUserInitialValue();
-            }
-        }
     }
 
     public static void controlNumbersSittingLimits() {
