@@ -76,22 +76,25 @@ public class UsingLoops {
             indexRange++;
         }
         indexRange = 0;
-        String controlTypeInt;
+        String controlType;
         System.out.println("\nMethod 2: \"While\"");
         int count = 0;
         while (indexRange < sumSeparateDigits.length) {
+            if (rangeNumbers[indexRange] <= 0 && !(String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1)) {
+                sumSeparateDigits[indexRange]++;
+            }
             if (sumSeparateDigits[indexRange] == 0 || rangeNumbers[indexRange] == 0) {
-                controlTypeInt = "By zero!";
+                controlType = "By zero!";
                 sumSeparateDigits[indexRange] = 0;
             } else {
                 if (rangeNumbers[indexRange] % sumSeparateDigits[indexRange] == 0) {
-                    controlTypeInt = "Whole!";
+                    controlType = "Whole!";
                     count++;
                 } else {
-                    controlTypeInt = "Fraction!";
+                    controlType = "Fraction!";
                 }
             }
-            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange], sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlTypeInt);
+            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange], sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlType);
             indexRange++;
         }
         System.out.println("Count of whole numbers - " + count);
@@ -117,22 +120,25 @@ public class UsingLoops {
         } while (indexRange < rangeNumbers.length);
 
         indexRange = 0;
-        String controlTypeInt;
+        String controlType;
         System.out.println("\nMethod 3: \"Do-While\"");
         int count = 0;
         do {
+            if (rangeNumbers[indexRange] <= 0 && !(String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1)) {
+                sumSeparateDigits[indexRange]++;
+            }
             if (sumSeparateDigits[indexRange] == 0 || rangeNumbers[indexRange] == 0) {
-                controlTypeInt = "By zero!";
+                controlType = "By zero!";
                 sumSeparateDigits[indexRange] = 0;
             } else {
                 if (rangeNumbers[indexRange] % sumSeparateDigits[indexRange] == 0) {
-                    controlTypeInt = "Whole!";
+                    controlType = "Whole!";
                     count++;
                 } else {
-                    controlTypeInt = "Fraction!";
+                    controlType = "Fraction!";
                 }
             }
-            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange], sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlTypeInt);
+            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange], sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlType);
             indexRange++;
         } while (indexRange < rangeNumbers.length);
         System.out.println("Count of whole numbers - " + count);
