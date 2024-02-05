@@ -7,7 +7,8 @@ public class UsingLoops {
     static int finalValue;
 
     public static void main(String[] args) {
-        System.out.println("Enter 2 numbers (points), after which this program will count the number of integers that are divisible by the sum of their numbers.\n");
+        System.out.println("Enter 2 numbers (points), after which this program will count the number of integers " +
+                "that are divisible by the sum of their numbers.\n");
         System.out.print("Enter the point A: ");
         initialValue = enterUserInitialValue();
 
@@ -30,7 +31,8 @@ public class UsingLoops {
         for (int indexRange = 0; indexRange < rangeNumbers.length; indexRange++) {
             int digit = rangeNumbers[indexRange];
             for (int indexSymbol = 0; indexSymbol < String.valueOf(digit).length(); indexSymbol++) {
-                sumSeparateDigits[indexRange] += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).replace("-", "0").charAt(indexSymbol));
+                sumSeparateDigits[indexRange] += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).
+                        replace("-", "0").charAt(indexSymbol));
             }
             String count;
             if (sumSeparateDigits[indexRange] == 0 || digit == 0) {
@@ -53,22 +55,22 @@ public class UsingLoops {
     public static void calculateSumNumbersMethodWhile(int[] rangeNumbers) {
         int indexRange = 0;
         int indexSymbol;
-        int sumSymbolsInIndex = 0;
         int[] sumSeparateDigits = new int[rangeNumbers.length];
         while (indexRange < rangeNumbers.length) {
             indexSymbol = 0;
             while (indexSymbol < String.valueOf(rangeNumbers[indexRange]).length()) {
-                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).charAt(indexSymbol));
+                sumSeparateDigits[indexRange] += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).
+                        charAt(indexSymbol));
                 indexSymbol++;
             }
-            sumSeparateDigits[indexRange] = sumSymbolsInIndex;
-            sumSymbolsInIndex = 0;
             indexRange++;
         }
-        indexRange = 0;
+
+
         String controlType;
         System.out.println("\nMethod 2: \"While\"");
         int count = 0;
+        indexRange = 0;
         while (indexRange < sumSeparateDigits.length) {
             if (rangeNumbers[indexRange] <= 0) {
                 sumSeparateDigits[indexRange]++;
@@ -84,7 +86,8 @@ public class UsingLoops {
                     controlType = "Fraction!";
                 }
             }
-            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange], sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlType);
+            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange],
+                    sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlType);
             indexRange++;
         }
         System.out.println("Count of whole numbers - " + count);
@@ -97,7 +100,8 @@ public class UsingLoops {
         int[] sumSeparateDigits = new int[rangeNumbers.length];
         do {
             do {
-                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).charAt(indexSymbol));
+                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).
+                        charAt(indexSymbol));
                 indexSymbol++;
             } while (indexSymbol < String.valueOf(rangeNumbers[indexRange]).length());
             sumSeparateDigits[indexRange] = sumSymbolsInIndex;
@@ -125,7 +129,8 @@ public class UsingLoops {
                     controlType = "Fraction!";
                 }
             }
-            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange], sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlType);
+            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange],
+                    sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlType);
             indexRange++;
         } while (indexRange < rangeNumbers.length);
         System.out.println("Count of whole numbers - " + count);
@@ -184,4 +189,3 @@ public class UsingLoops {
         return pointLimit.nextInt();
     }
 }
-
