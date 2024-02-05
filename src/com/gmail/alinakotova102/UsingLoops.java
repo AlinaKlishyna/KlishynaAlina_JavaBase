@@ -31,7 +31,7 @@ public class UsingLoops {
         for (int indexRange = 0; indexRange < rangeNumbers.length; indexRange++) {
             int number = rangeNumbers[indexRange];
             for (int indexSymbol = 0; indexSymbol < String.valueOf(number).length(); indexSymbol++) {
-                sumSeparateDigits[indexRange] += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).
+                sumSeparateDigits[indexRange] += Character.getNumericValue(String.valueOf(number).
                         replace("-", "0").charAt(indexSymbol));
             }
             String count;
@@ -62,8 +62,7 @@ public class UsingLoops {
             int number = rangeNumbers[indexRange];
             indexSymbol = 0;
             while (indexSymbol < String.valueOf(number).length()) {
-                sumSeparateDigits[indexRange] += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).
-                        charAt(indexSymbol));
+                sumSeparateDigits[indexRange] += Character.getNumericValue(String.valueOf(number).charAt(indexSymbol));
                 indexSymbol++;
             }
             if (number <= 0) {
@@ -98,8 +97,7 @@ public class UsingLoops {
         do {
             int number = rangeNumbers[indexRange];
             do {
-                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(number).
-                        charAt(indexSymbol));
+                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(number).charAt(indexSymbol));
                 indexSymbol++;
             } while (indexSymbol < String.valueOf(number).length());
             sumSeparateDigits[indexRange] = sumSymbolsInIndex;
