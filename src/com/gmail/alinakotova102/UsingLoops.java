@@ -24,122 +24,126 @@ public class UsingLoops {
     }
 
     public static void calculateSumNumbersMethodFor(int[] rangeNumbers) {
-        int[] sumSeparateNumbers = new int[rangeNumbers.length];
+        int[] sumSeparateDigits = new int[rangeNumbers.length];
         System.out.println("\nMethod 1: \"For\"");
         int countWholeNumbers = 0;
-        for (int indexRangeInt = 0; indexRangeInt < rangeNumbers.length; indexRangeInt++) {
-            for (int j = 0; j < String.valueOf(rangeNumbers[indexRangeInt]).length(); j++) {
-                String textValuesPartNumbers = String.valueOf(rangeNumbers[indexRangeInt]);
-                if (String.valueOf(Math.abs(rangeNumbers[indexRangeInt])).length() == 1) {
-                    sumSeparateNumbers[indexRangeInt] = 1;
+        for (int indexRange = 0; indexRange < rangeNumbers.length; indexRange++) {
+            for (int indexSymbol = 0; indexSymbol < String.valueOf(rangeNumbers[indexRange]).length(); indexSymbol++) {
+                String textValuesPartNumbers = String.valueOf(rangeNumbers[indexRange]);
+                if (!(String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1)) {
+                    sumSeparateDigits[indexRange] += Character.getNumericValue(textValuesPartNumbers.charAt(indexSymbol));
                 } else {
-                    sumSeparateNumbers[indexRangeInt] += Character.getNumericValue(textValuesPartNumbers.charAt(j));
+                    sumSeparateDigits[indexRange] = 1;
                 }
             }
-            String controlTypeInt;
-            if (sumSeparateNumbers[indexRangeInt] == 0 || rangeNumbers[indexRangeInt] == 0) {
-                controlTypeInt = "By zero!";
-                sumSeparateNumbers[indexRangeInt] = 0;
+            if (rangeNumbers[indexRange] <= 0 && !(String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1)) {
+                sumSeparateDigits[indexRange]++;
+            }
+            String count;
+            if (sumSeparateDigits[indexRange] == 0 || rangeNumbers[indexRange] == 0) {
+                count = "By zero!";
+                sumSeparateDigits[indexRange] = 0;
             } else {
-                if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
-                    controlTypeInt = "Whole!";
+                if (rangeNumbers[indexRange] % sumSeparateDigits[indexRange] == 0) {
+                    count = "Whole!";
                     countWholeNumbers++;
                 } else {
-                    controlTypeInt = "Fraction!";
+                    count = "Fraction!";
                 }
             }
-            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], controlTypeInt);
+            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange],
+                    sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], count);
         }
         System.out.println("Count of whole numbers - " + countWholeNumbers);
     }
 
     public static void calculateSumNumbersMethodWhile(int[] rangeNumbers) {
-        int indexRangeInt = 0;
+        int indexRange = 0;
         int indexSymbol;
         int sumSymbolsInIndex = 0;
-        int[] sumSeparateNumbers = new int[rangeNumbers.length];
-        while (indexRangeInt < rangeNumbers.length) {
+        int[] sumSeparateDigits = new int[rangeNumbers.length];
+        while (indexRange < rangeNumbers.length) {
             indexSymbol = 0;
-            while (indexSymbol < String.valueOf(rangeNumbers[indexRangeInt]).length()) {
-                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRangeInt]).charAt(indexSymbol));
+            while (indexSymbol < String.valueOf(rangeNumbers[indexRange]).length()) {
+                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).charAt(indexSymbol));
                 indexSymbol++;
             }
-            sumSeparateNumbers[indexRangeInt] = sumSymbolsInIndex;
-            if (String.valueOf(Math.abs(rangeNumbers[indexRangeInt])).length() == 1) {
-                sumSeparateNumbers[indexRangeInt] = 1;
+            sumSeparateDigits[indexRange] = sumSymbolsInIndex;
+            if (String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1) {
+                sumSeparateDigits[indexRange] = 1;
             }
             sumSymbolsInIndex = 0;
-            indexRangeInt++;
+            indexRange++;
         }
-        indexRangeInt = 0;
+        indexRange = 0;
         String controlTypeInt;
         System.out.println("\nMethod 2: \"While\"");
-        int countWholeNumbers = 0;
-        while (indexRangeInt < sumSeparateNumbers.length) {
-            if (sumSeparateNumbers[indexRangeInt] == 0 || rangeNumbers[indexRangeInt] == 0) {
+        int count = 0;
+        while (indexRange < sumSeparateDigits.length) {
+            if (sumSeparateDigits[indexRange] == 0 || rangeNumbers[indexRange] == 0) {
                 controlTypeInt = "By zero!";
-                sumSeparateNumbers[indexRangeInt] = 0;
+                sumSeparateDigits[indexRange] = 0;
             } else {
-                if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
+                if (rangeNumbers[indexRange] % sumSeparateDigits[indexRange] == 0) {
                     controlTypeInt = "Whole!";
-                    countWholeNumbers++;
+                    count++;
                 } else {
                     controlTypeInt = "Fraction!";
                 }
             }
-            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], controlTypeInt);
-            indexRangeInt++;
+            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange], sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlTypeInt);
+            indexRange++;
         }
-        System.out.println("Count of whole numbers - " + countWholeNumbers);
+        System.out.println("Count of whole numbers - " + count);
     }
 
     public static void calculateSumNumbersMethodDoWhile(int[] rangeNumbers) {
-        int indexRangeInt = 0;
+        int indexRange = 0;
         int indexSymbol = 0;
         int sumSymbolsInIndex = 0;
-        int[] sumSeparateNumbers = new int[rangeNumbers.length];
+        int[] sumSeparateDigits = new int[rangeNumbers.length];
         do {
             do {
-                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRangeInt]).charAt(indexSymbol));
+                sumSymbolsInIndex += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).charAt(indexSymbol));
                 indexSymbol++;
-            } while (indexSymbol < String.valueOf(rangeNumbers[indexRangeInt]).length());
-            sumSeparateNumbers[indexRangeInt] = sumSymbolsInIndex;
-            if (String.valueOf(Math.abs(rangeNumbers[indexRangeInt])).length() == 1) {
-                sumSeparateNumbers[indexRangeInt] = 1;
+            } while (indexSymbol < String.valueOf(rangeNumbers[indexRange]).length());
+            sumSeparateDigits[indexRange] = sumSymbolsInIndex;
+            if (String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1) {
+                sumSeparateDigits[indexRange] = 1;
             }
             indexSymbol = 0;
             sumSymbolsInIndex = 0;
-            indexRangeInt++;
-        } while (indexRangeInt < rangeNumbers.length);
+            indexRange++;
+        } while (indexRange < rangeNumbers.length);
 
-        indexRangeInt = 0;
+        indexRange = 0;
         String controlTypeInt;
         System.out.println("\nMethod 3: \"Do-While\"");
-        int countWholeNumbers = 0;
+        int count = 0;
         do {
-            if (sumSeparateNumbers[indexRangeInt] == 0 || rangeNumbers[indexRangeInt] == 0) {
+            if (sumSeparateDigits[indexRange] == 0 || rangeNumbers[indexRange] == 0) {
                 controlTypeInt = "By zero!";
-                sumSeparateNumbers[indexRangeInt] = 0;
+                sumSeparateDigits[indexRange] = 0;
             } else {
-                if (rangeNumbers[indexRangeInt] % sumSeparateNumbers[indexRangeInt] == 0) {
+                if (rangeNumbers[indexRange] % sumSeparateDigits[indexRange] == 0) {
                     controlTypeInt = "Whole!";
-                    countWholeNumbers++;
+                    count++;
                 } else {
                     controlTypeInt = "Fraction!";
                 }
             }
-            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], rangeNumbers[indexRangeInt], sumSeparateNumbers[indexRangeInt], controlTypeInt);
-            indexRangeInt++;
-        } while (indexRangeInt < rangeNumbers.length);
-        System.out.println("Count of whole numbers - " + countWholeNumbers);
+            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange], sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], controlTypeInt);
+            indexRange++;
+        } while (indexRange < rangeNumbers.length);
+        System.out.println("Count of whole numbers - " + count);
     }
 
 
     public static int[] rangeGenerate(int initialLimit, int finalLimit) {
         int[] rangeNumbers = new int[(finalLimit - initialLimit) - 1];
         int index = 0;
-        for (int j = initialLimit + 1; j < finalLimit; j++) {
-            rangeNumbers[index++] = j;
+        for (int i = initialLimit + 1; i < finalLimit; i++) {
+            rangeNumbers[index++] = i;
         }
         System.out.print("Range between numbers: ");
         return rangeNumbers;
@@ -172,7 +176,7 @@ public class UsingLoops {
         for (int i = 0; i < arrayInt.length; i++) {
             displayRangeNumbers = displayRangeNumbers + arrayInt[i];
             if (i < arrayInt.length - 1) {
-                displayRangeNumbers +=", ";
+                displayRangeNumbers += ", ";
             }
         }
         System.out.println(displayRangeNumbers);
