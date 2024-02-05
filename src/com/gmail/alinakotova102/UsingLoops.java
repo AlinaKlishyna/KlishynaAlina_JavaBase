@@ -28,31 +28,24 @@ public class UsingLoops {
         System.out.println("\nMethod 1: \"For\"");
         int countWholeNumbers = 0;
         for (int indexRange = 0; indexRange < rangeNumbers.length; indexRange++) {
-            for (int indexSymbol = 0; indexSymbol < String.valueOf(rangeNumbers[indexRange]).length(); indexSymbol++) {
-                String textValuesPartNumbers = String.valueOf(rangeNumbers[indexRange]);
-                if (!(String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1)) {
-                    sumSeparateDigits[indexRange] += Character.getNumericValue(textValuesPartNumbers.charAt(indexSymbol));
-                } else {
-                    sumSeparateDigits[indexRange] = 1;
-                }
-            }
-            if (rangeNumbers[indexRange] <= 0 && !(String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1)) {
-                sumSeparateDigits[indexRange]++;
+            int digit = rangeNumbers[indexRange];
+            for (int indexSymbol = 0; indexSymbol < String.valueOf(digit).length(); indexSymbol++) {
+                sumSeparateDigits[indexRange] += Character.getNumericValue(String.valueOf(rangeNumbers[indexRange]).replace("-", "0").charAt(indexSymbol));
             }
             String count;
-            if (sumSeparateDigits[indexRange] == 0 || rangeNumbers[indexRange] == 0) {
+            if (sumSeparateDigits[indexRange] == 0 || digit == 0) {
                 count = "By zero!";
                 sumSeparateDigits[indexRange] = 0;
             } else {
-                if (rangeNumbers[indexRange] % sumSeparateDigits[indexRange] == 0) {
+                if (digit % sumSeparateDigits[indexRange] == 0) {
                     count = "Whole!";
                     countWholeNumbers++;
                 } else {
                     count = "Fraction!";
                 }
             }
-            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", rangeNumbers[indexRange],
-                    sumSeparateDigits[indexRange], rangeNumbers[indexRange], sumSeparateDigits[indexRange], count);
+            System.out.printf("Number - %d | Sum of numbers - %d | Type %d/%d - %s\n", digit,
+                    sumSeparateDigits[indexRange], digit, sumSeparateDigits[indexRange], count);
         }
         System.out.println("Count of whole numbers - " + countWholeNumbers);
     }
@@ -69,9 +62,6 @@ public class UsingLoops {
                 indexSymbol++;
             }
             sumSeparateDigits[indexRange] = sumSymbolsInIndex;
-            if (String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1) {
-                sumSeparateDigits[indexRange] = 1;
-            }
             sumSymbolsInIndex = 0;
             indexRange++;
         }
@@ -80,7 +70,7 @@ public class UsingLoops {
         System.out.println("\nMethod 2: \"While\"");
         int count = 0;
         while (indexRange < sumSeparateDigits.length) {
-            if (rangeNumbers[indexRange] <= 0 && !(String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1)) {
+            if (rangeNumbers[indexRange] <= 0) {
                 sumSeparateDigits[indexRange]++;
             }
             if (sumSeparateDigits[indexRange] == 0 || rangeNumbers[indexRange] == 0) {
@@ -111,9 +101,6 @@ public class UsingLoops {
                 indexSymbol++;
             } while (indexSymbol < String.valueOf(rangeNumbers[indexRange]).length());
             sumSeparateDigits[indexRange] = sumSymbolsInIndex;
-            if (String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1) {
-                sumSeparateDigits[indexRange] = 1;
-            }
             indexSymbol = 0;
             sumSymbolsInIndex = 0;
             indexRange++;
@@ -124,7 +111,7 @@ public class UsingLoops {
         System.out.println("\nMethod 3: \"Do-While\"");
         int count = 0;
         do {
-            if (rangeNumbers[indexRange] <= 0 && !(String.valueOf(Math.abs(rangeNumbers[indexRange])).length() == 1)) {
+            if (rangeNumbers[indexRange] <= 0) {
                 sumSeparateDigits[indexRange]++;
             }
             if (sumSeparateDigits[indexRange] == 0 || rangeNumbers[indexRange] == 0) {
@@ -177,11 +164,11 @@ public class UsingLoops {
 
     }
 
-    public static void display(int[] arrayInt) {
+    public static void display(int[] array) {
         String displayRangeNumbers = "";
-        for (int i = 0; i < arrayInt.length; i++) {
-            displayRangeNumbers = displayRangeNumbers + arrayInt[i];
-            if (i < arrayInt.length - 1) {
+        for (int i = 0; i < array.length; i++) {
+            displayRangeNumbers = displayRangeNumbers + array[i];
+            if (i < array.length - 1) {
                 displayRangeNumbers += ", ";
             }
         }
