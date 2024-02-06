@@ -27,3 +27,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+desktop.ini
+HelloWorld.iml
+*.xml
