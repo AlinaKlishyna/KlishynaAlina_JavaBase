@@ -8,33 +8,33 @@ public class RugbyFootball {
     static int countPlayers = 25;
 
     public static void main(String[] args) {
-        int[] teamFirst = createTeam(randomNumber());
-        int[] teamSecond = createTeam(randomNumber());
+        int[] teamFirst = createTeam(countPlayers);
+        int[] teamSecond = createTeam(countPlayers);
 
         displayStatisticsConsole("First", teamFirst);
         displayStatisticsConsole("Second", teamSecond);
 
-        averageAge("First", teamFirst);
-        averageAge("Second", teamSecond);
+        double averageAgeFirstTeam = averageAge(teamFirst);
+        double averageAgeSecondTeam = averageAge(teamSecond);
+
+        displayAverageAgeTeams("First", averageAgeFirstTeam);
+        displayAverageAgeTeams("Second", averageAgeSecondTeam);
     }
 
-    public static int[] createTeam(int age) {
-        int[] teamPlayers = new int[countPlayers];
-        int index = 0;
-        for (int element : teamPlayers) {
-            teamPlayers[index] = age;
-            index++;
+    public static int[] createTeam(int countAllPlayers) {
+        int[] teamPlayers = new int[countAllPlayers];
+        for (int element = 0; element < teamPlayers.length; element++) {
+            teamPlayers[element] = ThreadLocalRandom.current().nextInt(minAge, maxAge);
         }
         return teamPlayers;
     }
 
-    public static void averageAge(String nameTeam, int[] team) {
-        int sum = 0;
+    public static double averageAge(int[] team) {
+        double sum = 0;
         for (int element : team) {
             sum += element;
         }
-        int average = sum / countPlayers;
-        System.out.printf("Team \"%s\": %d\n", nameTeam, average);
+        return sum / countPlayers;
     }
 
     public static void displayStatisticsConsole(String nameTeam, int[] team) {
@@ -46,7 +46,7 @@ public class RugbyFootball {
         System.out.println();
     }
 
-    public static int randomNumber() {
-        return ThreadLocalRandom.current().nextInt(minAge, maxAge);
+    public static void displayAverageAgeTeams(String nameTeam, double averageAge){
+        System.out.printf("Team \"%s\": %.3f\n", nameTeam, averageAge);
     }
 }
