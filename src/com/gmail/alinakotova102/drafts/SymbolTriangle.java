@@ -5,16 +5,19 @@ public class SymbolTriangle {
 
     public static void main(String[] args) {
         createTriangleFor(7);
-        createTriangleWhile(7);
-        createTriangleDoWhile(7);
+        //createTriangleWhile(7);
+        //createTriangleDoWhile(7);
     }
 
     public static void createTriangleFor(int height) {
         int countSymbols = 1;
-        int distance = height;
+        int count = 0;
         for (int i = 0; i < height; i++) {
-            for (int d = distance; d > 0; d--) {
+            for (int d = height; d > count; d--) {
                 System.out.print(" ");
+                if (d == count-1){
+                    d=height-count;
+                }
             }
 
             for (int j = 0; j < countSymbols; j++) {
@@ -22,7 +25,7 @@ public class SymbolTriangle {
             }
             System.out.println();
             countSymbols += 2;
-            distance--;
+            count++;
         }
     }
 
