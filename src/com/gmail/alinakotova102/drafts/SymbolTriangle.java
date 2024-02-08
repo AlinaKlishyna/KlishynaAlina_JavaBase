@@ -5,8 +5,8 @@ public class SymbolTriangle {
 
     public static void main(String[] args) {
         createTriangleFor(7);
-        //createTriangleWhile(7);
-        //createTriangleDoWhile(7);
+        createTriangleWhile(7);
+        createTriangleDoWhile(7);
     }
 
     public static void createTriangleFor(int height) {
