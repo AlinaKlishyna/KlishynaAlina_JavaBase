@@ -5,8 +5,8 @@ public class SymbolTriangle {
 
     public static void main(String[] args) {
         createTriangleFor(7);
-        //createTriangleWhile(7);
-        //createTriangleDoWhile(7);
+        createTriangleWhile(7);
+        createTriangleDoWhile(7);
     }
 
     public static void createTriangleFor(int height) {
@@ -33,11 +33,11 @@ public class SymbolTriangle {
         int countSymbols = 1;
         int count = 0;
         int j = 0;
-        int distance = height;
+        int d = height;
         while (count < height) {
-            while (distance > 0) {
+            while (d > 0) {
                 System.out.print(" ");
-                distance--;
+                d--;
             }
             while (j < countSymbols) {
                 System.out.print(symbol);
@@ -47,7 +47,7 @@ public class SymbolTriangle {
             j = 0;
             System.out.println();
             count++;
-            distance = height - count;
+            d = height - count;
 
         }
     }
@@ -56,12 +56,12 @@ public class SymbolTriangle {
         int count = 0;
         int countSymbols = 1;
         int j = 0;
-        int distance = height;
+        int d = height;
         do {
             do {
                 System.out.print(" ");
-                distance--;
-            }while (distance>0);
+                d--;
+            }while (d>0);
             do {
                 System.out.print(symbol);
                 j++;
@@ -69,7 +69,7 @@ public class SymbolTriangle {
             j = 0;
             countSymbols+=2;
             count++;
-            distance = height - count;
+            d = height - count;
             System.out.println();
         }while (count<height);
     }
