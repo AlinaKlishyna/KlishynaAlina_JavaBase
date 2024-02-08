@@ -30,10 +30,9 @@ public class SymbolTriangle {
         int countSymbols = 1;
         int count = 0;
         int j = 0;
-        int d = 0;
         int distance = height;
         while (count < height) {
-            while (distance > d) {
+            while (distance > 0) {
                 System.out.print(" ");
                 distance--;
             }
