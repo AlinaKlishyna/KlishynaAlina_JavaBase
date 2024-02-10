@@ -9,31 +9,49 @@ public class Lottery {
     public static int maxValue = 9;
 
     public static void main(String[] args) {
+        System.out.println("Guess numbers from 0-9 with only 7 numbers!");
+        int[] numbersUser = createArrayUser(lengthValues, minValue, maxValue);
+        System.out.print("Your numbers: ");
+        displayConsole(numbersUser);
+
+        System.out.print("Sorted array(your numbers): ");
+        int[] numbersUserSorted = sortArray(sortArray(numbersUser));
+        displayConsole(numbersUserSorted);
+
         int[] numbersOrganizer = createArrayRandomNumbers(lengthValues, minValue, maxValue);
         System.out.print("Numbers wished by the organizing company: ");
         displayConsole(numbersOrganizer);
 
         System.out.print("Sorted array(organizing company):");
-        int [] numbersOrganizerSorted = sortArray(sortArray(numbersOrganizer));
+        int[] numbersOrganizerSorted = sortArray(sortArray(numbersOrganizer));
         displayConsole(numbersOrganizerSorted);
 
-
-        int[] numbersUser = createArrayUser(lengthValues, minValue, maxValue);
-        System.out.print("Your numbers: ");
-        displayConsole(numbersUser);
-
-        System.out.print("Sorted array(your numbers):");
-        int [] numbersUserSorted = sortArray(sortArray(numbersUser));
-        displayConsole(numbersUserSorted);
+        int[][] arraysNumber = {numbersOrganizerSorted, numbersUserSorted};
+        System.out.println("Coincidences: " + generalMatches(arraysNumber));
     }
-    public static int[] sortArray(int[] array){
-        for (int i = 0; i < array.length; i++){
-            if (i < array.length-1){
-                while (array[i] > array[i+1]){
-                    int c = array[i+1];
-                    array[i+1] = array[i];
+
+    public static int generalMatches(int[][] array) {
+        int sumCoincidence = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (i < array.length - 1) {
+                    if (array[i][j] == array[i + 1][j]) {
+                        sumCoincidence++;
+                    }
+                }
+            }
+        }
+        return sumCoincidence;
+    }
+
+    public static int[] sortArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (i < array.length - 1) {
+                while (array[i] > array[i + 1]) {
+                    int c = array[i + 1];
+                    array[i + 1] = array[i];
                     array[i] = c;
-                    i=0;
+                    i = 0;
                 }
             }
         }
@@ -43,19 +61,19 @@ public class Lottery {
     public static int[] createArrayUser(int length, int minValue, int maxValue) {
         int[] numbersUser = new int[length];
         Scanner numbers = new Scanner(System.in);
-        for (int i = 0; i < numbersUser.length; i++){
-            System.out.printf("Enter number #%d: ", (i+1));
-            while (!numbers.hasNextInt()){
-                System.out.printf("Non valid! Enter number #%d: ", (i+1));
+        for (int i = 0; i < numbersUser.length; i++) {
+            System.out.printf("Enter number #%d: ", (i + 1));
+            while (!numbers.hasNextInt()) {
+                System.out.printf("Non valid! Enter number #%d: ", (i + 1));
                 numbers.next();
             }
             numbersUser[i] = numbers.nextInt();
-            while (numbersUser[i] < minValue || numbersUser[i] > maxValue){
-                System.out.printf("Numbers must be in range [0-9]. Enter number #%d: ", (i+1));
-                if (!numbers.hasNextInt()){
-                    System.out.printf("Non valid! Enter number #%d: ", (i+1));
+            while (numbersUser[i] < minValue || numbersUser[i] > maxValue) {
+                System.out.printf("Numbers must be in range [0-9]. Enter number #%d: ", (i + 1));
+                if (!numbers.hasNextInt()) {
+                    System.out.printf("Non valid! Enter number #%d: ", (i + 1));
                     numbers.next();
-                }else {
+                } else {
                     numbersUser[i] = numbers.nextInt();
                 }
             }
@@ -76,7 +94,7 @@ public class Lottery {
         int count = 0;
         for (int element : array) {
             System.out.print(element);
-            if (count < array.length-1) {
+            if (count < array.length - 1) {
                 System.out.print(", ");
             }
             count++;
