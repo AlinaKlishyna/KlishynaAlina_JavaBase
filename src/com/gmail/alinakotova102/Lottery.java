@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.drafts;
+package com.gmail.alinakotova102;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
