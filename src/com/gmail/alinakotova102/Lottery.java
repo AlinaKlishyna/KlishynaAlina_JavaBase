@@ -1,6 +1,5 @@
 package com.gmail.alinakotova102;
 
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Lottery {
@@ -9,79 +8,52 @@ public class Lottery {
     public static int maxValue = 9;
 
     public static void main(String[] args) {
-        System.out.println("Guess numbers from 0-9 with only 7 numbers!");
-        int[] numbersUser = createArrayUser(lengthValues, minValue, maxValue);
-        System.out.print("Your numbers: ");
-        displayConsole(numbersUser);
+        System.out.println("Lottery!");
+        int[] ticketUser = createRandomTicket(lengthValues, minValue, maxValue);
+        System.out.println("Your numbers: ");
+        displayConsole(ticketUser);
 
-        System.out.print("Sorted array(your numbers): ");
-        int[] numbersUserSorted = sortArray(sortArray(numbersUser));
-        displayConsole(numbersUserSorted);
+        int[] ticketOrganizer = createRandomTicket(lengthValues, minValue, maxValue);
+        System.out.println("Numbers wished by the organizing company: ");
+        displayConsole(ticketOrganizer);
 
-        int[] numbersOrganizer = createArrayRandomNumbers(lengthValues, minValue, maxValue);
-        System.out.print("Numbers wished by the organizing company: ");
-        displayConsole(numbersOrganizer);
+        System.out.println("\nSorted array(your numbers): ");
+        int[] ticketUserSorted = sortTicket(ticketUser);
+        displayConsole(ticketUserSorted);
 
-        System.out.print("Sorted array(organizing company):");
-        int[] numbersOrganizerSorted = sortArray(sortArray(numbersOrganizer));
-        displayConsole(numbersOrganizerSorted);
+        System.out.println("Sorted array(organizing company):");
+        int[] ticketOrganizerSorted = sortTicket(sortTicket(ticketOrganizer));
+        displayConsole(ticketOrganizerSorted);
 
-        int[][] arraysNumber = {numbersOrganizerSorted, numbersUserSorted};
-        System.out.println("Coincidences: " + generalMatches(arraysNumber));
+        System.out.println();
+        generalMatches(ticketOrganizerSorted, ticketUserSorted);
     }
 
-    public static int generalMatches(int[][] array) {
+    public static void generalMatches(int[] ticketOrganization, int[] ticketUser) {
         int sumCoincidence = 0;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (i < array.length - 1) {
-                    if (array[i][j] == array[i + 1][j]) {
-                        sumCoincidence++;
-                    }
-                }
+        for (int i = 0; i < lengthValues; i++) {
+            if (ticketOrganization[i] == ticketUser[i]) {
+                sumCoincidence++;
+                System.out.printf("Number #%d - Value %d - coincided!\n", (i + 1), ticketOrganization[i]);
             }
         }
-        return sumCoincidence;
+        System.out.println("The total coincided: " + sumCoincidence);
     }
 
-    public static int[] sortArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (i < array.length - 1) {
-                while (array[i] > array[i + 1]) {
-                    int c = array[i + 1];
-                    array[i + 1] = array[i];
-                    array[i] = c;
-                    i = 0;
+    public static int[] sortTicket(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - 1; j++) {
+                while (array[j] > array[i + 1]) {
+                    int save = array[i + 1];
+                    array[i + 1] = array[j];
+                    array[j] = save;
                 }
             }
         }
         return array;
     }
 
-    public static int[] createArrayUser(int length, int minValue, int maxValue) {
-        int[] numbersUser = new int[length];
-        Scanner numbers = new Scanner(System.in);
-        for (int i = 0; i < numbersUser.length; i++) {
-            System.out.printf("Enter number #%d: ", (i + 1));
-            while (!numbers.hasNextInt()) {
-                System.out.printf("Non valid! Enter number #%d: ", (i + 1));
-                numbers.next();
-            }
-            numbersUser[i] = numbers.nextInt();
-            while (numbersUser[i] < minValue || numbersUser[i] > maxValue) {
-                System.out.printf("Numbers must be in range [0-9]. Enter number #%d: ", (i + 1));
-                if (!numbers.hasNextInt()) {
-                    System.out.printf("Non valid! Enter number #%d: ", (i + 1));
-                    numbers.next();
-                } else {
-                    numbersUser[i] = numbers.nextInt();
-                }
-            }
-        }
-        return numbersUser;
-    }
-
-    public static int[] createArrayRandomNumbers(int length, int minValue, int maxValue) {
+    public static int[] createRandomTicket(int length, int minValue, int maxValue) {
         int[] randomNumbers = new int[length];
         for (int i = 0; i < randomNumbers.length; i++) {
             randomNumbers[i] = ThreadLocalRandom.current().nextInt(minValue, maxValue);
