@@ -22,7 +22,7 @@ public class Lottery {
         displayConsole(ticketUserSorted);
 
         System.out.println("Sorted array(organizing company):");
-        int[] ticketOrganizerSorted = sortTicket(sortTicket(ticketOrganizer));
+        int[] ticketOrganizerSorted = sortTicket(ticketOrganizer);
         displayConsole(ticketOrganizerSorted);
 
         System.out.println();
