@@ -43,7 +43,7 @@ public class TranspositionMatrix {
 
     public static void displayMatrix(int[][] matrix) {
         for (int[] element : matrix) {
-                System.out.print(Arrays.toString(element) + "\t");
+            System.out.print(Arrays.toString(element) + "\t");
             System.out.println();
         }
     }
