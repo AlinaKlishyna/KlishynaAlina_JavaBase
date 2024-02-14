@@ -1,5 +1,6 @@
 package com.gmail.alinakotova102;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TranspositionMatrix {
@@ -14,12 +15,12 @@ public class TranspositionMatrix {
         displayMatrix(initialMatrix);
 
         System.out.println("\nTransported matrix: ");
-        int[][] transportedMatrix = transposeMatrix(initialMatrix, length, weight);
+        int[][] transportedMatrix = transposeMatrix(initialMatrix);
         displayMatrix(transportedMatrix);
     }
 
-    public static int[][] transposeMatrix(int[][] matrix, int length, int weight) {
-        int[][] modMatrix = new int[weight][length];
+    public static int[][] transposeMatrix(int[][] matrix) {
+        int[][] modMatrix = new int[matrix[0].length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 modMatrix[j][i] = matrix[i][j];
@@ -41,10 +42,8 @@ public class TranspositionMatrix {
     }
 
     public static void displayMatrix(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " \t");
-            }
+        for (int[] element : matrix) {
+                System.out.print(Arrays.toString(element) + "\t");
             System.out.println();
         }
     }
