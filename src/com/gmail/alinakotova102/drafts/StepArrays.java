@@ -1,11 +1,32 @@
 package com.gmail.alinakotova102.drafts;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class StepArrays {
     public static void main(String[] args) {
-        System.out.println(enterNumber());
+        int countRows = enterNumber();
+        int maxCount = enterNumber();
+        int[][] numbers = createArray(countRows, maxCount);
+        displayConsole(numbers);
+    }
 
+    public static void displayConsole(int[][] array){
+        for (int[] element: array){
+            System.out.print(Arrays.toString(element));
+        }
+        System.out.println();
+    }
+
+    public static int[][] createArray(int length, int countInRow){
+        int[][] numbersRandom = new int[length][countInRow];
+        for (int i =0; i < numbersRandom.length; i++){
+            for (int j =0; j<numbersRandom[i].length; j++){
+                numbersRandom[i][j] = ThreadLocalRandom.current().nextInt(0, countInRow);
+            }
+        }
+        return numbersRandom;
     }
 
     public static int enterNumber() {
