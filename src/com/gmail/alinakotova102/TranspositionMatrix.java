@@ -15,8 +15,8 @@ public class TranspositionMatrix {
         displayMatrix(initialMatrix);
 
         System.out.println("\nTransported matrix: ");
-        int[][] transportedMatrix = transposeMatrix(initialMatrix);
-        displayMatrix(transportedMatrix);
+        int[][] transposedMatrix = transposeMatrix(initialMatrix);
+        displayMatrix(transposedMatrix);
     }
 
     public static int[][] transposeMatrix(int[][] matrix) {
@@ -42,23 +42,26 @@ public class TranspositionMatrix {
     }
 
     public static void displayMatrix(int[][] matrix) {
-        for (int[] element : matrix) {
-            System.out.print(Arrays.toString(element) + "\t");
+        for (int[] row : matrix) {
+            System.out.print(Arrays.toString(row) + "\t");
             System.out.println();
         }
     }
 
     public static int enterNumberUser() {
         Scanner numberUser = new Scanner(System.in);
-        while (!numberUser.hasNextInt()) {
-            System.out.print("Number non valid! Enter again: ");
-            numberUser.next();
+        while (true) {
+            if (numberUser.hasNextInt()) {
+                int number = numberUser.nextInt();
+                if (number > 0 && number < 999) {
+                    return number;
+                } else {
+                    System.out.print("Enter number in the range [1 - 999]: ");
+                }
+            } else {
+                System.out.print("Number non valid! Enter again: ");
+            }
+            numberUser.nextLine();
         }
-        int number = numberUser.nextInt();
-        while (number <= 0 || number > 999) {
-            System.out.print("Enter number in the range [1 - 999]: ");
-            number = Integer.parseInt(numberUser.next());
-        }
-        return number;
     }
 }
