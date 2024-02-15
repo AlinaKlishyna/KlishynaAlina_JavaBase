@@ -19,6 +19,34 @@ public class StepArrays {
         System.out.println("\nModified array");
         int[][] arraySorted = sortEvenOdd(array);
         displayConsole(arraySorted);
+
+        int sumElements = sumElements(array);
+        System.out.println("Sum of elements: " + sumElements);
+
+        int[] minElement = minElementInRow(array);
+        System.out.println("Minimal element in row: ");
+        displayConsole(minElement);
+    }
+
+    public static int[] minElementInRow(int[][] array) {
+        int[] min = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] < min[i])
+                    min[i] = array[i][j];
+            }
+        }
+        return min;
+    }
+
+    public static int sumElements(int[][] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                sum += array[i][j];
+            }
+        }
+        return sum;
     }
 
     public static int[][] sortEvenOdd(int[][] array) {
@@ -49,6 +77,19 @@ public class StepArrays {
             System.out.print(Arrays.toString(element) + "\n");
         }
         System.out.println();
+    }
+
+    public static void displayConsole(int[] array) {
+        System.out.print("[");
+        int count = 0;
+        for (int element : array) {
+            System.out.print(element);
+            if (count < array.length - 1) {
+                System.out.print(", ");
+            }
+            count++;
+        }
+        System.out.println("]");
     }
 
     public static int[][] createArray(int length, int countInRow) {
