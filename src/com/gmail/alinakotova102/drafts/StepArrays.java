@@ -5,9 +5,7 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class StepArrays {
-    public static int maxRandom = 0;
     public static Integer NOT_DEFINE = null;
-
     public static void main(String[] args) {
         System.out.println("Creation of a stepped array with random numbers");
         System.out.print("Enter N - the number of lines: ");
@@ -22,7 +20,7 @@ public class StepArrays {
         System.out.print("\nEnter number for create array with random numbers\nMin number: ");
         int minRandom = enterNumber();
         System.out.print("Max number: ");
-        maxRandom = enterNumber();
+        int maxRandom = enterNumber();
         while (maxRandom - minRandom == 1 || maxRandom == minRandom) {
             System.out.println("Error! There is no range between numbers\nMax number: ");
             maxRandom = enterNumber();
@@ -42,11 +40,44 @@ public class StepArrays {
         System.out.println("Sum of elements: " + sumElements);
 
         Integer[] minElement = minElementInRow(array);
-        System.out.println("\nMinimal element in row: ");
+        System.out.print("\nMinimal element in row: ");
         displayConsole(minElement);
 
         int absoluteMinElement = absoluteMin(array);
         System.out.println("\nAbsolute minimal element: " + absoluteMinElement);
+
+        System.out.println("\nDividing by the absolute minimum: ");
+        System.out.print(divideByAbsoluteMin(array, absoluteMinElement));
+    }
+
+    public static boolean divisionCheck(int number, int divisionNumber) {
+        if (number % divisionNumber == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public static String divideByAbsoluteMin(int[][] array, int absoluteMin) {
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (!(array[i].length == 0) && !(absoluteMin == 0) || array[i][j]!=0) {
+                    if (divisionCheck(array[i][j], absoluteMin)) {
+                        array[i][j] /= absoluteMin;
+                    } else {
+                        count++;
+                    }
+                } else {
+                    count++;
+                }
+            }
+        }
+        String message = "";
+        if (!(count > 0)) {
+            displayConsole(array);
+            return message = "Possible!";
+        }
+        return message = "Impossible";
     }
 
     public static int absoluteMin(int[][] array) {
@@ -54,7 +85,7 @@ public class StepArrays {
         int init = arrayMinNumbers[0];
         for (int i = 0; i < arrayMinNumbers.length; i++) {
             if (arrayMinNumbers[i] == null) {
-                init = 0;
+                i++;
             } else {
                 if (arrayMinNumbers[i] < init) {
                     init = arrayMinNumbers[i];
@@ -76,7 +107,6 @@ public class StepArrays {
 
     public static Integer[] minElementInRow(int[][] array) {
         Integer[] modArray = new Integer[array.length];
-        int count = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i].length == 0) {
                 modArray[i] = NOT_DEFINE;
