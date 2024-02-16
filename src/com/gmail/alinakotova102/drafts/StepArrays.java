@@ -114,13 +114,13 @@ public class StepArrays {
             if (array[i].length == 0) {
                 modArray[i] = NOT_DEFINE;
             } else {
-                int init = array[i][0];
+                int min = array[i][0];
                 for (int j = 0; j < array[i].length; j++) {
-                    if (array[i][j] < init) {
-                        init = min(array[i]);
+                    if (array[i][j] < min) {
+                        min = min(array[i]);
                     }
                 }
-                modArray[i] = init;
+                modArray[i] = min;
             }
         }
         return modArray;
