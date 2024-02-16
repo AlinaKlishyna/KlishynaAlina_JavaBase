@@ -6,38 +6,41 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class StepArrays {
     public static Integer NOT_DEFINE = null;
+
     public static void main(String[] args) {
-        System.out.println("Creation of a stepped array with random numbers");
-        System.out.print("Enter N - the number of lines: ");
-        int countRows = enterNumberBetween();
-        System.out.print("Enter M - the maximum number of elements in a row: ");
-        int maxCount = enterNumberBetween();
+//        System.out.println("Creation of a stepped array with random numbers");
+//        System.out.print("Enter N - the number of lines: ");
+//        int countRows = enterNumberBetween();
+//        System.out.print("Enter M - the maximum number of elements in a row: ");
+//        int maxCount = enterNumberBetween();
+//
+//        System.out.print("\nEnter number for create array with random numbers\nMin number: ");
+//        int minRandom = enterNumber();
+//        System.out.print("Max number: ");
+//        int maxRandom = enterNumber();
+//        while (Math.abs(maxRandom - minRandom) == 1 || maxRandom == minRandom) {
+//            System.out.println("Error! There is no range between numbers\nMax number: ");
+//            maxRandom = enterNumber();
+//        }
 
-        System.out.print("\nEnter number for create array with random numbers\nMin number: ");
-        int minRandom = enterNumber();
-        System.out.print("Max number: ");
-        int maxRandom = enterNumber();
-        while (Math.abs(maxRandom-minRandom) == 1 || maxRandom == minRandom ) {
-            System.out.println("Error! There is no range between numbers\nMax number: ");
-            maxRandom = enterNumber();
-        }
+//        int[][] array = createArray(countRows, maxCount);
+//        array = fillArray(array, minRandom, maxRandom);
 
-        int[][] array = createArray(countRows, maxCount);
-        array = fillArray(array, minRandom, maxRandom);
+        int[][] array = new int[][]{{2, 0, 4, 6, 8, 10}, {20, 22, 44, 66}};
 
         System.out.println("\nInitial array");
-        displayConsole(array);
+        display(array);
 
         System.out.println("Modified array");
         int[][] arraySorted = sortEvenOdd(array);
-        displayConsole(arraySorted);
+        display(arraySorted);
 
         int sumElements = sumElements(array);
         System.out.println("Sum of elements: " + sumElements);
 
         Integer[] minElement = minElementInRow(array);
         System.out.print("\nMinimal element in row: ");
-        displayConsole(minElement);
+        display(minElement);
 
         int absoluteMinElement = absoluteMin(array);
         System.out.println("\nAbsolute minimal element: " + absoluteMinElement);
@@ -47,30 +50,31 @@ public class StepArrays {
     }
 
     public static boolean divisionCheck(int number, int divisionNumber) {
-        if (number % divisionNumber == 0) {
-            return true;
-        }
-        return false;
+        return number % divisionNumber == 0;
     }
 
     public static String divideByAbsoluteMin(int[][] array, int absoluteMin) {
         int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (!(array[i].length == 0) && !(absoluteMin == 0) || array[i][j]!=0) {
-                    if (divisionCheck(array[i][j], absoluteMin)) {
-                        array[i][j] /= absoluteMin;
-                    } else {
-                        count++;
+        String message = "";
+        if (!(absoluteMin == 0)) {
+            for (int i = 0; i < array.length; i++) {
+                if (!(array[i].length == 0)) {
+                    for (int j = 0; j < array[i].length; j++) {
+                        if (divisionCheck(array[i][j], absoluteMin)) {
+                            array[i][j] /= absoluteMin;
+                        } else {
+                            count++;
+                        }
                     }
                 } else {
                     count++;
                 }
             }
+        } else {
+            return message = "Impossible";
         }
-        String message = "";
         if (!(count > 0)) {
-            displayConsole(array);
+            display(array);
             return message = "Possible!";
         }
         return message = "Impossible";
@@ -169,14 +173,14 @@ public class StepArrays {
         return array;
     }
 
-    public static void displayConsole(int[][] array) {
+    public static void display(int[][] array) {
         for (int[] element : array) {
             System.out.print(Arrays.toString(element) + "\n");
         }
         System.out.println();
     }
 
-    public static void displayConsole(Integer[] array) {
+    public static void display(Integer[] array) {
         System.out.print("[");
         int count = 0;
         for (Integer element : array) {
