@@ -28,8 +28,9 @@ public class Person {
         sherlockHolmes.phone = 37742123513L;
         System.out.println(sherlockHolmes.personInfo());
     }
-    public String personInfo(){
-        return "Зателефонувати громадянину " + name +" " + lastname + " із міста " + city + " можна за номером "
-                + phone +"\n";
+
+    public String personInfo() {
+        return "Зателефонувати громадянину " + name + " " + lastname + " із міста " + city + " можна за номером "
+                + phone + "\n";
     }
 }
