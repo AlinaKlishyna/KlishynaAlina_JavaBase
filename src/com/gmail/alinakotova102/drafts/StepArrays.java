@@ -26,7 +26,7 @@ public class StepArrays {
 //        int[][] array = createArray(countRows, maxCount);
 //        array = fillArray(array, minRandom, maxRandom);
 
-        int[][] array = new int[][]{{2, 4, 6, 8, 10}, {20, 22, 44, 66}};
+        int[][] array = new int[][]{{4,8,10,14,8}, {66,88,36,12,2}};
 
         System.out.println("\nInitial array");
         display(array);
@@ -134,10 +134,10 @@ public class StepArrays {
         return sum;
     }
 
-    public static int[][] swap(int[][] array, int row, int column, int newColumn) {
-        int saveNumber = array[row][column + 1];
-        array[row][column + 1] = array[row][newColumn];
-        array[row][newColumn] = saveNumber;
+    public static int[] swap(int[] array, int num, int num2 ) {
+            int saveNumber = array[num + 1];
+            array[num + 1] = array[num2];
+            array[num2] = saveNumber;
         return array;
     }
 
@@ -145,7 +145,7 @@ public class StepArrays {
         for (int j = 0; j < array[index].length - 1; j++) {
             for (int k = 0; k < array[index].length - 1; k++) {
                 if (array[index][k] > array[index][j + 1]) {
-                    swap(array, index, j, k);
+                    swap(array[index], j, k);
                 }
             }
         }
@@ -156,7 +156,7 @@ public class StepArrays {
         for (int j = 0; j < array[index].length - 1; j++) {
             for (int k = 0; k < array[index].length - 1; k++) {
                 if (array[index][k] < array[index][j + 1]) {
-                    swap(array, index, j, k);
+                    swap(array[index], j,k);
                 }
             }
         }
