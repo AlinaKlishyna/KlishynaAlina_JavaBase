@@ -27,10 +27,22 @@ public class StepArrays {
         System.out.println("\nMinimal element in row: ");
         displayConsole(minElement);
 
-        //displayConsole(array);
+        int absoluteMinElement = absoluteMin(array);
+        System.out.println("\nAbsolute minimal element: " + absoluteMinElement);
     }
 
-    public static int min(int[] array) { //  1, 4, 6, -10, 5
+    public static int absoluteMin(int[][] array) {
+        int[] arrayMinNumbers = minElementInRow(array);
+        int init = arrayMinNumbers[0];
+        for (int i = 0; i < arrayMinNumbers.length; i++) {
+            if (arrayMinNumbers[i] < init) {
+                init = arrayMinNumbers[i];
+            }
+        }
+        return init;
+    }
+
+    public static int min(int[] array) {
         int minValue = array[0];
         for (int i = 0; i < array.length; i++) {
             if (array[i] < minValue) {
@@ -48,7 +60,6 @@ public class StepArrays {
                 if (array[i][j] < init) {
                     init = min(array[i]);
                 }
-
             }
             modArray[i] = init;
         }
