@@ -116,9 +116,7 @@ public class StepArrays {
             } else {
                 int min = array[i][0];
                 for (int j = 0; j < array[i].length; j++) {
-                    if (array[i][j] < min) {
-                        min = min(array[i]);
-                    }
+                    min = min(array[i]);
                 }
                 modArray[i] = min;
             }
