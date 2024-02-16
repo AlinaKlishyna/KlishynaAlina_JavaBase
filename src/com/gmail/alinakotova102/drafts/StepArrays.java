@@ -11,11 +11,7 @@ public class StepArrays {
         System.out.print("Enter N - the number of lines: ");
         int countRows = enterNumberBetween();
         System.out.print("Enter M - the maximum number of elements in a row: ");
-        int maxCount = enterNumber();
-        while (!(maxCount >= 0)) {
-            System.out.println("Enter a number greater than 0: ");
-            maxCount = enterNumber();
-        }
+        int maxCount = enterNumberBetween();
 
         System.out.print("\nEnter number for create array with random numbers\nMin number: ");
         int minRandom = enterNumber();
