@@ -17,6 +17,10 @@ public class StepArrays {
         int minRandom = enterNumber();
         System.out.print("Max number: ");
         int maxRandom = enterNumber();
+        while (maxRandom - minRandom == 1 || maxRandom == minRandom) {
+            System.out.println("Error! There is no range between numbers\nMax number: ");
+            maxRandom = enterNumber();
+        }
 
         int[][] array = createArray(countRows, maxCount);
         array = fillArray(array, minRandom, maxRandom);
