@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class StepArrays {
+    public static int maxRandom = 0;
+    public static Integer NOT_DEFINE = null;
 
     public static void main(String[] args) {
         System.out.println("Creation of a stepped array with random numbers");
@@ -20,7 +22,7 @@ public class StepArrays {
         System.out.print("\nEnter number for create array with random numbers\nMin number: ");
         int minRandom = enterNumber();
         System.out.print("Max number: ");
-        int maxRandom = enterNumber();
+        maxRandom = enterNumber();
         while (maxRandom - minRandom == 1 || maxRandom == minRandom) {
             System.out.println("Error! There is no range between numbers\nMax number: ");
             maxRandom = enterNumber();
@@ -32,14 +34,14 @@ public class StepArrays {
         System.out.println("\nInitial array");
         displayConsole(array);
 
-        System.out.println("\nModified array");
+        System.out.println("Modified array");
         int[][] arraySorted = sortEvenOdd(array);
         displayConsole(arraySorted);
 
         int sumElements = sumElements(array);
         System.out.println("Sum of elements: " + sumElements);
 
-        int[] minElement = minElementInRow(array);
+        Integer[] minElement = minElementInRow(array);
         System.out.println("\nMinimal element in row: ");
         displayConsole(minElement);
 
@@ -48,13 +50,12 @@ public class StepArrays {
     }
 
     public static int absoluteMin(int[][] array) {
-        int[] arrayMinNumbers = minElementInRow(array);
-        int count = 0;
+        Integer[] arrayMinNumbers = minElementInRow(array);
         int init = arrayMinNumbers[0];
         for (int i = 0; i < arrayMinNumbers.length; i++) {
-            if (array[i].length == 0) {
-                arrayMinNumbers[i] = 0;
-            }else {
+            if (arrayMinNumbers[i] == null) {
+                init = 0;
+            } else {
                 if (arrayMinNumbers[i] < init) {
                     init = arrayMinNumbers[i];
                 }
@@ -73,22 +74,12 @@ public class StepArrays {
         return minValue;
     }
 
-    public static int countEmptyArrays(int[][] array) {
+    public static Integer[] minElementInRow(int[][] array) {
+        Integer[] modArray = new Integer[array.length];
         int count = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i].length == 0) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public static int[] minElementInRow(int[][] array) {
-        int[] modArray = new int[array.length - countEmptyArrays(array)];
-        int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].length == 0) {
-                count++;
+                modArray[i] = NOT_DEFINE;
             } else {
                 int init = array[i][0];
                 for (int j = 0; j < array[i].length; j++) {
@@ -96,7 +87,7 @@ public class StepArrays {
                         init = min(array[i]);
                     }
                 }
-                modArray[i - count] = init;
+                modArray[i] = init;
             }
         }
         return modArray;
@@ -159,10 +150,10 @@ public class StepArrays {
         System.out.println();
     }
 
-    public static void displayConsole(int[] array) {
+    public static void displayConsole(Integer[] array) {
         System.out.print("[");
         int count = 0;
-        for (int element : array) {
+        for (Integer element : array) {
             System.out.print(element);
             if (count < array.length - 1) {
                 System.out.print(", ");
@@ -173,12 +164,12 @@ public class StepArrays {
     }
 
     public static int[][] createArray(int countInRow, int length) {
-        int[][] numbersRandom = new int[length][];
-        for (int i = 0; i < length; i++) {
-            if (countInRow == 0) {
+        int[][] numbersRandom = new int[countInRow][];
+        for (int i = 0; i < numbersRandom.length; i++) {
+            if (length == 0) {
                 numbersRandom[i] = new int[0];
             } else {
-                numbersRandom[i] = new int[ThreadLocalRandom.current().nextInt(countInRow)];
+                numbersRandom[i] = new int[ThreadLocalRandom.current().nextInt(length)];
             }
         }
         return numbersRandom;
