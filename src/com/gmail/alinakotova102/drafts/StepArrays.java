@@ -26,7 +26,7 @@ public class StepArrays {
 //        int[][] array = createArray(countRows, maxCount);
 //        array = fillArray(array, minRandom, maxRandom);
 
-        int[][] array = new int[][]{{4,8,10,14,8}, {66,88,36,12,2}};
+        int[][] array = new int[][]{{4,8,10,14,8}, {2,66,4,88,36,12,2}};
 
         System.out.println("\nInitial array");
         display(array);
@@ -141,22 +141,26 @@ public class StepArrays {
         return array;
     }
 
-    public static int[][] sortGrowth(int[][] array, int index) {
-        for (int j = 0; j < array[index].length - 1; j++) {
-            for (int k = 0; k < array[index].length - 1; k++) {
-                if (array[index][k] > array[index][j + 1]) {
-                    swap(array[index], j, k);
+    public static int[] sortAsc(int[] array) {
+        for (int index = 0; index < array.length; index++) {
+            for (int j = 0; j < array.length - 1; j++) {
+                for (int k = 0; k < array.length - 1; k++) {
+                    if (array[k] > array[j + 1]) {
+                        swap(array, j, k);
+                    }
                 }
             }
         }
         return array;
     }
 
-    public static int[][] sortDecline(int[][] array, int index) {
-        for (int j = 0; j < array[index].length - 1; j++) {
-            for (int k = 0; k < array[index].length - 1; k++) {
-                if (array[index][k] < array[index][j + 1]) {
-                    swap(array[index], j,k);
+    public static int[] sortDesc(int[] array) {
+        for (int index = 0; index < array.length; index++) {
+            for (int j = 0; j < array.length - 1; j++) {
+                for (int k = 0; k < array.length - 1; k++) {
+                    if (array[k] < array[j + 1]) {
+                        swap(array, j,k);
+                    }
                 }
             }
         }
@@ -166,9 +170,10 @@ public class StepArrays {
     public static int[][] sortEvenOdd(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             if ((i + 1) % 2 == 0) {
-                sortGrowth(array, i);
+                sortAsc(array[i]);
+
             } else {
-                sortDecline(array, i);
+                sortDesc(array[i]);
             }
         }
         return array;
