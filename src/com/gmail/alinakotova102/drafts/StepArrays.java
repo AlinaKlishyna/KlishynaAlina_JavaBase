@@ -24,19 +24,35 @@ public class StepArrays {
         System.out.println("Sum of elements: " + sumElements);
 
         int[] minElement = minElementInRow(array);
-        System.out.println("Minimal element in row: ");
+        System.out.println("\nMinimal element in row: ");
         displayConsole(minElement);
+
+        //displayConsole(array);
+    }
+
+    public static int min(int[] array) { //  1, 4, 6, -10, 5
+        int minValue = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < minValue) {
+                minValue = array[i];
+            }
+        }
+        return minValue;
     }
 
     public static int[] minElementInRow(int[][] array) {
-        int[] min = new int[array.length];
+        int[] modArray = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (array[i][j] < min[i])
-                    min[i] = array[i][j];
+            int init =  array[i][0];
+            for (int j = 0; j  < array[i].length; j++) {
+                if (array[i][j] < init) {
+                    init = min(array[i]);
+                }
+
             }
+            modArray[i] = init;
         }
-        return min;
+        return modArray;
     }
 
     public static int sumElements(int[][] array) {
@@ -54,13 +70,13 @@ public class StepArrays {
             for (int j = 0; j < array[i].length - 1; j++) {
                 for (int k = 0; k < array[i].length - i; k++) {
                     if ((i + 1) % 2 == 0) {
-                        while (array[i][k] > array[i][j + 1]) {
+                        if (array[i][k] > array[i][j + 1]) {
                             int saveNumber = array[i][j + 1];
                             array[i][j + 1] = array[i][k];
                             array[i][k] = saveNumber;
                         }
                     } else {
-                        while (array[i][k] < array[i][j + 1]) {
+                        if (array[i][k] < array[i][j + 1]) {
                             int saveNumber = array[i][j + 1];
                             array[i][j + 1] = array[i][k];
                             array[i][k] = saveNumber;
@@ -96,7 +112,7 @@ public class StepArrays {
         int[][] numbersRandom = new int[length][countInRow];
         for (int i = 0; i < numbersRandom.length; i++) {
             for (int j = 0; j < numbersRandom[i].length; j++) {
-                numbersRandom[i][j] = ThreadLocalRandom.current().nextInt(0, countInRow);
+                numbersRandom[i][j] = ThreadLocalRandom.current().nextInt(10, 20);
             }
         }
         return numbersRandom;
