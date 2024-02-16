@@ -43,8 +43,8 @@ public class StepArrays {
     public static int[] minElementInRow(int[][] array) {
         int[] modArray = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            int init =  array[i][0];
-            for (int j = 0; j  < array[i].length; j++) {
+            int init = array[i][0];
+            for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] < init) {
                     init = min(array[i]);
                 }
@@ -65,24 +65,41 @@ public class StepArrays {
         return sum;
     }
 
+    public static int[][] swap(int[][] array, int row, int column, int newColumn) {
+        int saveNumber = array[row][column + 1];
+        array[row][column + 1] = array[row][newColumn];
+        array[row][newColumn] = saveNumber;
+        return array;
+    }
+
+    public static int[][] sortGrowth(int[][] array, int index) {
+        for (int j = 0; j < array[index].length - 1; j++) {
+            for (int k = 0; k < array[index].length - 1; k++) {
+                if (array[index][k] > array[index][j + 1]) {
+                    swap(array, index, j, k);
+                }
+            }
+        }
+        return array;
+    }
+
+    public static int[][] sortDecline(int[][] array, int index) {
+        for (int j = 0; j < array[index].length - 1; j++) {
+            for (int k = 0; k < array[index].length - 1; k++) {
+                if (array[index][k] < array[index][j + 1]) {
+                    swap(array, index, j, k);
+                }
+            }
+        }
+        return array;
+    }
+
     public static int[][] sortEvenOdd(int[][] array) {
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length - 1; j++) {
-                for (int k = 0; k < array[i].length - i; k++) {
-                    if ((i + 1) % 2 == 0) {
-                        if (array[i][k] > array[i][j + 1]) {
-                            int saveNumber = array[i][j + 1];
-                            array[i][j + 1] = array[i][k];
-                            array[i][k] = saveNumber;
-                        }
-                    } else {
-                        if (array[i][k] < array[i][j + 1]) {
-                            int saveNumber = array[i][j + 1];
-                            array[i][j + 1] = array[i][k];
-                            array[i][k] = saveNumber;
-                        }
-                    }
-                }
+            if ((i + 1) % 2 == 0) {
+                sortGrowth(array, i);
+            } else {
+                sortDecline(array, i);
             }
         }
         return array;
