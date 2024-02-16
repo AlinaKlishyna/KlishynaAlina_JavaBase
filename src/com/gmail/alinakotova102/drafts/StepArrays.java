@@ -22,11 +22,11 @@ public class StepArrays {
 //            System.out.println("Error! There is no range between numbers\nMax number: ");
 //            maxRandom = enterNumber();
 //        }
-
+//
 //        int[][] array = createArray(countRows, maxCount);
 //        array = fillArray(array, minRandom, maxRandom);
 
-        int[][] array = new int[][]{{2, 0, 4, 6, 8, 10}, {20, 22, 44, 66}};
+        int[][] array = new int[][]{{2, 4, 6, 8, 10}, {20, 22, 44, 66}};
 
         System.out.println("\nInitial array");
         display(array);
@@ -73,7 +73,7 @@ public class StepArrays {
         } else {
             return message = "Impossible";
         }
-        if (!(count > 0)) {
+        if (count <= 0) {
             display(array);
             return message = "Possible!";
         }
@@ -81,18 +81,21 @@ public class StepArrays {
     }
 
     public static int absoluteMin(int[][] array) {
-        Integer[] arrayMinNumbers = minElementInRow(array);
-        int init = arrayMinNumbers[0];
-        for (int i = 0; i < arrayMinNumbers.length; i++) {
-            if (arrayMinNumbers[i] == null) {
-                i++;
+        return min(minElementInRow(array));
+    }
+
+    public static int min(Integer[] array) {
+        int minValue = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                array[i] = NOT_DEFINE;
             } else {
-                if (arrayMinNumbers[i] < init) {
-                    init = arrayMinNumbers[i];
+                if (array[i] < minValue) {
+                    minValue = array[i];
                 }
             }
         }
-        return init;
+        return minValue;
     }
 
     public static int min(int[] array) {
