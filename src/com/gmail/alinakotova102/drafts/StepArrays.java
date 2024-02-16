@@ -8,11 +8,20 @@ public class StepArrays {
     public static void main(String[] args) {
         System.out.println("Creation of a stepped array with random numbers");
         System.out.print("Enter N - the number of lines: ");
-        int countRows = enterNumber();
+        int countRows = enterNumberBetween();
         System.out.print("Enter M - the maximum number of elements in a row: ");
-        int maxCount = enterNumber();
+        int maxCount = enterNumberBetween();
 
-        int[][] array = createArray(countRows, maxCount);
+        System.out.print("\nEnter number for create array with random numbers\nMin number: ");
+        int minRandom = enterNumber();
+        System.out.print("Max number: ");
+        int maxRandom = enterNumber();
+        if (maxRandom - minRandom == 1) {
+            System.out.println("Error! There is no range between numbers\nMax number: ");
+            maxRandom = enterNumber();
+        }
+
+        int[][] array = createArray(countRows, maxCount, minRandom, maxRandom);
         System.out.println("\nInitial array");
         displayConsole(array);
 
@@ -136,17 +145,22 @@ public class StepArrays {
         System.out.println("]");
     }
 
-    public static int[][] createArray(int length, int countInRow) {
+    public static int[][] createArray(int length, int countInRow, int minRandom, int maxRandom) {
+        if (minRandom > maxRandom) {
+            int save = minRandom;
+            minRandom = maxRandom;
+            maxRandom = save;
+        }
         int[][] numbersRandom = new int[length][countInRow];
         for (int i = 0; i < numbersRandom.length; i++) {
             for (int j = 0; j < numbersRandom[i].length; j++) {
-                numbersRandom[i][j] = ThreadLocalRandom.current().nextInt(10, 20);
+                numbersRandom[i][j] = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
             }
         }
         return numbersRandom;
     }
 
-    public static int enterNumber() {
+    public static int enterNumberBetween() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             if (scanner.hasNextInt()) {
@@ -161,5 +175,14 @@ public class StepArrays {
             }
             scanner.nextLine();
         }
+    }
+
+    public static int enterNumber() {
+        Scanner scanner = new Scanner(System.in);
+        while (!scanner.hasNextInt()) {
+            System.out.print("Value non valid! Enter again: ");
+            scanner.next();
+        }
+        return scanner.nextInt();
     }
 }
