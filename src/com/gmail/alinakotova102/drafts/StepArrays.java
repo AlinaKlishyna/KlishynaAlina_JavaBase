@@ -135,10 +135,10 @@ public class StepArrays {
         return sum;
     }
 
-    public static int[] swap(int[] array, int num, int num2) {
-        int saveNumber = array[num + 1];
-        array[num + 1] = array[num2];
-        array[num2] = saveNumber;
+    public static int[] swap(int[] array, int numberFirst, int numberSecond) {
+        int saveNumber = array[numberFirst + 1];
+        array[numberFirst + 1] = array[numberSecond];
+        array[numberSecond] = saveNumber;
         return array;
     }
 
