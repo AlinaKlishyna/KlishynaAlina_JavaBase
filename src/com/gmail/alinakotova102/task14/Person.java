@@ -9,13 +9,6 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, String lastName, String city, long phone) {
-        this.name = name;
-        this.lastName = lastName;
-        this.city = city;
-        this.phone = phone;
-    }
-
     public String getName() {
         return name;
     }
