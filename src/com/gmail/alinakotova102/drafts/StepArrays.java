@@ -10,17 +10,17 @@ public class StepArrays {
     public static void main(String[] args) {
         System.out.println("Creation of a stepped array with random numbers");
         System.out.print("Enter N - the number of lines: ");
-        int countRows = enterNumberBetween();
+        int countRows = enterNumberBetween(0, Integer.MAX_VALUE);
         System.out.print("Enter M - the maximum number of elements in a row: ");
-        int maxCount = enterNumberBetween();
+        int maxCount = enterNumberBetween(1, 999);
 
         System.out.print("\nEnter number for create array with random numbers\nMin number: ");
-        int minRandom = enterNumber();
+        int minRandom = enterNumberBetween(-999, 999);
         System.out.print("Max number: ");
-        int maxRandom = enterNumber();
+        int maxRandom = enterNumberBetween(-999, 999);
         while (Math.abs(maxRandom - minRandom) == 1 || maxRandom == minRandom) {
             System.out.println("Error! There is no range between numbers\nMax number: ");
-            maxRandom = enterNumber();
+            maxRandom = enterNumberBetween(-999, 999);
         }
 
         int[][] array = createArray(countRows, maxCount);
@@ -40,53 +40,36 @@ public class StepArrays {
         System.out.print("\nMinimal element in row: ");
         display(minElement);
 
-        int absoluteMinElement = absoluteMin(array);
+        Integer absoluteMinElement = absoluteMin(array);
         System.out.println("\nAbsolute minimal element: " + absoluteMinElement);
 
         System.out.println("\nDividing by the absolute minimum: ");
         System.out.print(divideByAbsoluteMin(array, absoluteMinElement));
     }
 
-    public static boolean divisionCheck(int number, int divisionNumber) {
-        return number % divisionNumber == 0;
-    }
-
-    public static String divideByAbsoluteMin(int[][] matrix, int absoluteMin) {
-        int count = 0;
-        String message = "";
-        if (!(absoluteMin == 0)) {
+    public static String divideByAbsoluteMin(int[][] matrix, Integer absoluteMin) {
+        if (absoluteMin != null) {
             for (int i = 0; i < matrix.length; i++) {
-                if (!(matrix[i].length == 0)) {
-                    for (int j = 0; j < matrix[i].length; j++) {
-                        if (divisionCheck(matrix[i][j], absoluteMin)) {
-                            matrix[i][j] /= absoluteMin;
-                        } else {
-                            count++;
-                        }
-                    }
-                } else {
-                    count++;
+                for (int j = 0; j < matrix[i].length; j++) {
+                    matrix[i][j] /= absoluteMin;
                 }
             }
-        } else {
-            return message = "Impossible";
-        }
-        if (count <= 0) {
             display(matrix);
-            return message = "Possible!";
+            return "Possible";
+        } else {
+            return "Impossible";
         }
-        return message = "Impossible";
     }
 
-    public static int absoluteMin(int[][] matrix) {
-        return min(minElementInRow(matrix));
+    public static Integer absoluteMin(int[][] matrix) {
+        if (min(minElementInRow(matrix)) != 0) {
+            return min(minElementInRow(matrix));
+        }
+        return NOT_DEFINE;
     }
 
     public static int min(Integer[] array) {
-        int minValue = 0;
-        if (array[0] == null) {
-            minValue = 0;
-        }
+        int minValue = array[0];
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
                 array[i] = NOT_DEFINE;
@@ -223,12 +206,12 @@ public class StepArrays {
         return numbers;
     }
 
-    public static int enterNumberBetween() {
+    public static int enterNumberBetween(int ordinary, int bound) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             if (scanner.hasNextInt()) {
                 int number = scanner.nextInt();
-                if (number >= 1 && number < 999) {
+                if (number >= ordinary && number < bound) {
                     return number;
                 } else {
                     System.out.print("Enter a number between [1-999]: ");
@@ -238,14 +221,5 @@ public class StepArrays {
             }
             scanner.nextLine();
         }
-    }
-
-    public static int enterNumber() {
-        Scanner scanner = new Scanner(System.in);
-        while (!scanner.hasNextInt()) {
-            System.out.print("Value non valid! Enter again: ");
-            scanner.next();
-        }
-        return scanner.nextInt();
     }
 }
