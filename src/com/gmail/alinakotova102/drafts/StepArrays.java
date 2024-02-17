@@ -23,14 +23,14 @@ public class StepArrays {
             maxRandom = enterNumberBetween(-999, 999);
         }
 
-        int[][] array = createArray(countRows, maxCount);
+        Integer[][] array = createArray(countRows, maxCount);
         array = fillArray(array, minRandom, maxRandom);
 
         System.out.println("\nInitial array");
         display(array);
 
         System.out.println("Modified array");
-        int[][] arraySorted = sortEvenOdd(array);
+        Integer[][] arraySorted = sortEvenOdd(array);
         display(arraySorted);
 
         int sumElements = sumElements(array);
@@ -47,7 +47,7 @@ public class StepArrays {
         System.out.print(divideByAbsoluteMin(array, absoluteMinElement));
     }
 
-    public static String divideByAbsoluteMin(int[][] matrix, Integer absoluteMin) {
+    public static String divideByAbsoluteMin(Integer[][] matrix, Integer absoluteMin) {
         if (absoluteMin != null) {
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
@@ -61,7 +61,7 @@ public class StepArrays {
         }
     }
 
-    public static Integer absoluteMin(int[][] matrix) {
+    public static Integer absoluteMin(Integer[][] matrix) {
         if (min(minElementInRow(matrix)) != 0) {
             return min(minElementInRow(matrix));
         }
@@ -69,7 +69,7 @@ public class StepArrays {
     }
 
     public static int min(Integer[] array) {
-        int minValue = array[0];
+        Integer minValue = array[0];
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
                 array[i] = NOT_DEFINE;
@@ -82,17 +82,7 @@ public class StepArrays {
         return minValue;
     }
 
-    public static int min(int[] array) {
-        int minValue = array[0];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < minValue) {
-                minValue = array[i];
-            }
-        }
-        return minValue;
-    }
-
-    public static Integer[] minElementInRow(int[][] matrix) {
+    public static Integer[] minElementInRow(Integer[][] matrix) {
         Integer[] modArray = new Integer[matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             if (matrix[i].length == 0) {
@@ -108,7 +98,7 @@ public class StepArrays {
         return modArray;
     }
 
-    public static int sumElements(int[][] matrix) {
+    public static int sumElements(Integer[][] matrix) {
         int sum = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -118,14 +108,14 @@ public class StepArrays {
         return sum;
     }
 
-    public static int[] swap(int[] array, int numberFirst, int numberSecond) {
+    public static Integer[] swap(Integer[] array, int numberFirst, int numberSecond) {
         int saveNumber = array[numberFirst + 1];
         array[numberFirst + 1] = array[numberSecond];
         array[numberSecond] = saveNumber;
         return array;
     }
 
-    public static int[] sortAsc(int[] array) {
+    public static Integer[] sortAsc(Integer[] array) {
         for (int index = 0; index < array.length; index++) {
             for (int j = 0; j < array.length - 1; j++) {
                 for (int k = 0; k < array.length - 1; k++) {
@@ -138,7 +128,7 @@ public class StepArrays {
         return array;
     }
 
-    public static int[] sortDesc(int[] array) {
+    public static Integer[] sortDesc(Integer[] array) {
         for (int index = 0; index < array.length; index++) {
             for (int j = 0; j < array.length - 1; j++) {
                 for (int k = 0; k < array.length - 1; k++) {
@@ -151,7 +141,7 @@ public class StepArrays {
         return array;
     }
 
-    public static int[][] sortEvenOdd(int[][] matrix) {
+    public static Integer[][] sortEvenOdd(Integer[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             if ((i + 1) % 2 == 0) {
                 sortAsc(matrix[i]);
@@ -162,7 +152,7 @@ public class StepArrays {
         return matrix;
     }
 
-    public static void display(int[][] matrix) {
+    public static void display(Integer[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             System.out.print(Arrays.toString(matrix[i]) + "\n");
         }
@@ -180,19 +170,19 @@ public class StepArrays {
         System.out.println("]");
     }
 
-    public static int[][] createArray(int rowCount, int length) {
-        int[][] numbersRandom = new int[rowCount][];
+    public static Integer[][] createArray(int rowCount, int length) {
+        Integer[][] numbersRandom = new Integer[rowCount][];
         for (int i = 0; i < numbersRandom.length; i++) {
             if (length <= 0) {
-                numbersRandom[i] = new int[0];
+                numbersRandom[i] = new Integer[0];
             } else {
-                numbersRandom[i] = new int[ThreadLocalRandom.current().nextInt(length)];
+                numbersRandom[i] = new Integer[ThreadLocalRandom.current().nextInt(length)];
             }
         }
         return numbersRandom;
     }
 
-    public static int[][] fillArray(int[][] numbers, int min, int max) {
+    public static Integer[][] fillArray(Integer[][] numbers, int min, int max) {
         if (min > max) {
             int save = min;
             min = max;
