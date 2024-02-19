@@ -1,6 +1,7 @@
 package com.gmail.alinakotova102.task15;
 
 public class Burger {
+    private String nameBurger;
     private String bun;
     private String meat;
     private int countMeat;
@@ -9,6 +10,7 @@ public class Burger {
     private String sauce;
 
     public Burger() {
+        this.nameBurger = "Normal burger";
         this.bun = "bun";
         this.cheese = "cheese";
         this.herbs = "herbs";
@@ -23,25 +25,20 @@ public class Burger {
         info(bun, meat, countMeat, cheese, herbs, sauce);
     }
 
-    public Burger(String meat, int countMeat) {
-        this();
-        this.meat = meat;
-        this.countMeat = countMeat;
-        info(bun, meat, countMeat, cheese, herbs);
-    }
-
     public void info(String bun, String meat, int countMeat, String cheese, String herbs, String sauce) {
-        if (countMeat == 1) {
-            System.out.printf("Normal burger\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", bun, meat, countMeat,
-                    cheese, herbs, sauce);
-        } else {
-            System.out.printf("Normal burger with double meat\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", bun,
-                    meat, countMeat, cheese, herbs, sauce);
+        if (sauce == null){
+            this.nameBurger = "Diet burger";
+            System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s\n\n", nameBurger, bun, meat, countMeat,
+                    cheese, herbs);
+        }else {
+            if (countMeat == 1) {
+                System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", nameBurger, bun, meat, countMeat,
+                        cheese, herbs, sauce);
+            } else {
+                this.nameBurger += " with double meat";
+                System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", nameBurger, bun,
+                        meat, countMeat, cheese, herbs, sauce);
+            }
         }
-    }
-
-    public void info(String bun, String meat, int countMeat, String cheese, String herbs) {
-        System.out.printf("Diet burger\nIngredients: %s, %s(count x%d), %s, %s\n\n", bun, meat, countMeat,
-                cheese, herbs);
     }
 }

@@ -4,6 +4,6 @@ public class BurgerMain {
     public static void main(String[] args) {
        Burger orderFirst = new Burger("chicken", 1, "mayonnaise");
        Burger orderSecond = new Burger("pork", 2, "mayonnaise");
-       Burger orderThird = new Burger("chicken", 1);
+       Burger orderThird = new Burger("chicken", 1, null);
     }
 }
