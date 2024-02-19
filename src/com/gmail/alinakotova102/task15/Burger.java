@@ -1,7 +1,7 @@
 package com.gmail.alinakotova102.task15;
 
 public class Burger {
-    private String nameBurger;
+    private String name;
     private String bun;
     private String meat;
     private int countMeat;
@@ -10,35 +10,48 @@ public class Burger {
     private String sauce;
 
     public Burger() {
-        this.nameBurger = "Normal burger";
         this.bun = "bun";
         this.cheese = "cheese";
         this.herbs = "herbs";
-        this.sauce = "mayonnaise";
+    }
+
+    public Burger(String meat, String sauce) {
+        this();
+        this.name = "Normal burger";
+        this.meat = meat;
+        this.countMeat = 1;
+        this.sauce = sauce;
+        info(name, bun, meat, countMeat, cheese, herbs, sauce);
     }
 
     public Burger(String meat, int countMeat, String sauce) {
         this();
+        this.name = "Double meat burger";
         this.meat = meat;
         this.countMeat = countMeat;
         this.sauce = sauce;
-        info(bun, meat, countMeat, cheese, herbs, sauce);
+        info(name, bun, meat, countMeat, cheese, herbs, sauce);
     }
 
-    public void info(String bun, String meat, int countMeat, String cheese, String herbs, String sauce) {
+    public Burger(String meat, int countMeat) {
+        this();
+        this.name = "Diet burger";
+        this.meat = meat;
+        this.countMeat = countMeat;
+        this.sauce = null;
+        info(name, bun, meat, countMeat, cheese, herbs, sauce);
+    }
+
+    public void info(String name, String bun, String meat, int countMeat, String cheese, String herbs, String sauce) {
         if (sauce == null) {
-            this.nameBurger = "Diet burger";
-            System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s\n\n", nameBurger, bun, meat, countMeat,
+            System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s\n\n", name, bun, meat, countMeat,
                     cheese, herbs);
-        }else {
-            if (countMeat == 1) {
-                System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", nameBurger, bun, meat, countMeat,
+        } else if (countMeat == 2) {
+            System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", name, bun, meat, countMeat,
                         cheese, herbs, sauce);
-            } else {
-                this.nameBurger += " with double meat";
-                System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", nameBurger, bun,
+        } else {
+            System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", name, bun,
                         meat, countMeat, cheese, herbs, sauce);
-            }
         }
     }
 }
