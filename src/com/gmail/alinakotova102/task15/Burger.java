@@ -48,10 +48,10 @@ public class Burger {
                     cheese, herbs);
         } else if (countMeat == 2) {
             System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", name, bun, meat, countMeat,
-                        cheese, herbs, sauce);
+                    cheese, herbs, sauce);
         } else {
             System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s, %s\n\n", name, bun,
-                        meat, countMeat, cheese, herbs, sauce);
+                    meat, countMeat, cheese, herbs, sauce);
         }
     }
 }
