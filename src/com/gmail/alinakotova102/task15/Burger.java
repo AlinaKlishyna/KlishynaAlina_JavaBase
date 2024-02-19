@@ -26,7 +26,7 @@ public class Burger {
     }
 
     public void info(String bun, String meat, int countMeat, String cheese, String herbs, String sauce) {
-        if (sauce == null){
+        if (sauce == null) {
             this.nameBurger = "Diet burger";
             System.out.printf("%s\nIngredients: %s, %s(count x%d), %s, %s\n\n", nameBurger, bun, meat, countMeat,
                     cheese, herbs);
