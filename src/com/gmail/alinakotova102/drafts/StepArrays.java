@@ -6,225 +6,202 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class StepArrays {
     public static Integer NOT_DEFINE = null;
+
     public static void main(String[] args) {
         System.out.println("Creation of a stepped array with random numbers");
         System.out.print("Enter N - the number of lines: ");
-        int countRows = enterNumberBetween();
+        int countRows = enterNumberBetween(0, Integer.MAX_VALUE);
         System.out.print("Enter M - the maximum number of elements in a row: ");
-        int maxCount = enterNumber();
-        while (!(maxCount >= 0)) {
-            System.out.println("Enter a number greater than 0: ");
-            maxCount = enterNumber();
-        }
+        int maxCount = enterNumberBetween(1, 999);
 
         System.out.print("\nEnter number for create array with random numbers\nMin number: ");
-        int minRandom = enterNumber();
+        int minRandom = enterNumberBetween(-999, 999);
         System.out.print("Max number: ");
-        int maxRandom = enterNumber();
-        while (maxRandom - minRandom == 1 || maxRandom == minRandom) {
+        int maxRandom = enterNumberBetween(-999, 999);
+        while (Math.abs(maxRandom - minRandom) == 1 || maxRandom == minRandom) {
             System.out.println("Error! There is no range between numbers\nMax number: ");
-            maxRandom = enterNumber();
+            maxRandom = enterNumberBetween(-999, 999);
         }
 
-        int[][] array = createArray(countRows, maxCount);
+        Integer[][] array = createArray(countRows, maxCount);
         array = fillArray(array, minRandom, maxRandom);
 
         System.out.println("\nInitial array");
-        displayConsole(array);
+        display(array);
 
         System.out.println("Modified array");
-        int[][] arraySorted = sortEvenOdd(array);
-        displayConsole(arraySorted);
+        Integer[][] arraySorted = sortEvenOdd(array);
+        display(arraySorted);
 
         int sumElements = sumElements(array);
         System.out.println("Sum of elements: " + sumElements);
 
         Integer[] minElement = minElementInRow(array);
         System.out.print("\nMinimal element in row: ");
-        displayConsole(minElement);
+        display(minElement);
 
-        int absoluteMinElement = absoluteMin(array);
+        Integer absoluteMinElement = absoluteMin(array);
         System.out.println("\nAbsolute minimal element: " + absoluteMinElement);
 
         System.out.println("\nDividing by the absolute minimum: ");
         System.out.print(divideByAbsoluteMin(array, absoluteMinElement));
     }
 
-    public static boolean divisionCheck(int number, int divisionNumber) {
-        if (number % divisionNumber == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public static String divideByAbsoluteMin(int[][] array, int absoluteMin) {
-        int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (!(array[i].length == 0) && !(absoluteMin == 0) || array[i][j]!=0) {
-                    if (divisionCheck(array[i][j], absoluteMin)) {
-                        array[i][j] /= absoluteMin;
-                    } else {
-                        count++;
-                    }
-                } else {
-                    count++;
+    public static String divideByAbsoluteMin(Integer[][] matrix, Integer absoluteMin) {
+        if (absoluteMin != null) {
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix[i].length; j++) {
+                    matrix[i][j] /= absoluteMin;
                 }
             }
+            display(matrix);
+            return "Possible";
+        } else {
+            return "Impossible";
         }
-        String message = "";
-        if (!(count > 0)) {
-            displayConsole(array);
-            return message = "Possible!";
-        }
-        return message = "Impossible";
     }
 
-    public static int absoluteMin(int[][] array) {
-        Integer[] arrayMinNumbers = minElementInRow(array);
-        int init = arrayMinNumbers[0];
-        for (int i = 0; i < arrayMinNumbers.length; i++) {
-            if (arrayMinNumbers[i] == null) {
-                i++;
+    public static Integer absoluteMin(Integer[][] matrix) {
+        if (min(minElementInRow(matrix)) != 0) {
+            return min(minElementInRow(matrix));
+        }
+        return NOT_DEFINE;
+    }
+
+    public static int min(Integer[] array) {
+        Integer minValue = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                array[i] = NOT_DEFINE;
             } else {
-                if (arrayMinNumbers[i] < init) {
-                    init = arrayMinNumbers[i];
+                if (array[i] < minValue) {
+                    minValue = array[i];
                 }
-            }
-        }
-        return init;
-    }
-
-    public static int min(int[] array) {
-        int minValue = array[0];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < minValue) {
-                minValue = array[i];
             }
         }
         return minValue;
     }
 
-    public static Integer[] minElementInRow(int[][] array) {
-        Integer[] modArray = new Integer[array.length];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].length == 0) {
+    public static Integer[] minElementInRow(Integer[][] matrix) {
+        Integer[] modArray = new Integer[matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            if (matrix[i].length == 0) {
                 modArray[i] = NOT_DEFINE;
             } else {
-                int init = array[i][0];
-                for (int j = 0; j < array[i].length; j++) {
-                    if (array[i][j] < init) {
-                        init = min(array[i]);
-                    }
+                int min = matrix[i][0];
+                for (int j = 0; j < matrix[i].length; j++) {
+                    min = min(matrix[i]);
                 }
-                modArray[i] = init;
+                modArray[i] = min;
             }
         }
         return modArray;
     }
 
-    public static int sumElements(int[][] array) {
+    public static int sumElements(Integer[][] matrix) {
         int sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                sum += Math.abs(array[i][j]);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                sum += matrix[i][j];
             }
         }
         return sum;
     }
 
-    public static int[][] swap(int[][] array, int row, int column, int newColumn) {
-        int saveNumber = array[row][column + 1];
-        array[row][column + 1] = array[row][newColumn];
-        array[row][newColumn] = saveNumber;
+    public static Integer[] swap(Integer[] array, int numberFirst, int numberSecond) {
+        int saveNumber = array[numberFirst + 1];
+        array[numberFirst + 1] = array[numberSecond];
+        array[numberSecond] = saveNumber;
         return array;
     }
 
-    public static int[][] sortGrowth(int[][] array, int index) {
-        for (int j = 0; j < array[index].length - 1; j++) {
-            for (int k = 0; k < array[index].length - 1; k++) {
-                if (array[index][k] > array[index][j + 1]) {
-                    swap(array, index, j, k);
+    public static Integer[] sortAsc(Integer[] array) {
+        for (int index = 0; index < array.length; index++) {
+            for (int j = 0; j < array.length - 1; j++) {
+                for (int k = 0; k < array.length - 1; k++) {
+                    if (array[k] > array[j + 1]) {
+                        swap(array, j, k);
+                    }
                 }
             }
         }
         return array;
     }
 
-    public static int[][] sortDecline(int[][] array, int index) {
-        for (int j = 0; j < array[index].length - 1; j++) {
-            for (int k = 0; k < array[index].length - 1; k++) {
-                if (array[index][k] < array[index][j + 1]) {
-                    swap(array, index, j, k);
+    public static Integer[] sortDesc(Integer[] array) {
+        for (int index = 0; index < array.length; index++) {
+            for (int j = 0; j < array.length - 1; j++) {
+                for (int k = 0; k < array.length - 1; k++) {
+                    if (array[k] < array[j + 1]) {
+                        swap(array, j, k);
+                    }
                 }
             }
         }
         return array;
     }
 
-    public static int[][] sortEvenOdd(int[][] array) {
-        for (int i = 0; i < array.length; i++) {
+    public static Integer[][] sortEvenOdd(Integer[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
             if ((i + 1) % 2 == 0) {
-                sortGrowth(array, i);
+                sortAsc(matrix[i]);
             } else {
-                sortDecline(array, i);
+                sortDesc(matrix[i]);
             }
         }
-        return array;
+        return matrix;
     }
 
-    public static void displayConsole(int[][] array) {
-        for (int[] element : array) {
-            System.out.print(Arrays.toString(element) + "\n");
+    public static void display(Integer[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.print(Arrays.toString(matrix[i]) + "\n");
         }
         System.out.println();
     }
 
-    public static void displayConsole(Integer[] array) {
+    public static void display(Integer[] array) {
         System.out.print("[");
-        int count = 0;
-        for (Integer element : array) {
-            System.out.print(element);
-            if (count < array.length - 1) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i < array.length - 1) {
                 System.out.print(", ");
             }
-            count++;
         }
         System.out.println("]");
     }
 
-    public static int[][] createArray(int countInRow, int length) {
-        int[][] numbersRandom = new int[countInRow][];
+    public static Integer[][] createArray(int rowCount, int length) {
+        Integer[][] numbersRandom = new Integer[rowCount][];
         for (int i = 0; i < numbersRandom.length; i++) {
-            if (length == 0) {
-                numbersRandom[i] = new int[0];
+            if (length <= 0) {
+                numbersRandom[i] = new Integer[0];
             } else {
-                numbersRandom[i] = new int[ThreadLocalRandom.current().nextInt(length)];
+                numbersRandom[i] = new Integer[ThreadLocalRandom.current().nextInt(length)];
             }
         }
         return numbersRandom;
     }
 
-    public static int[][] fillArray(int[][] numbersRandom, int minRandom, int maxRandom) {
-        if (minRandom > maxRandom) {
-            int save = minRandom;
-            minRandom = maxRandom;
-            maxRandom = save;
+    public static Integer[][] fillArray(Integer[][] numbers, int min, int max) {
+        if (min > max) {
+            int save = min;
+            min = max;
+            max = save;
         }
-        for (int i = 0; i < numbersRandom.length; i++) {
-            for (int j = 0; j < numbersRandom[i].length; j++) {
-                numbersRandom[i][j] = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[i].length; j++) {
+                numbers[i][j] = ThreadLocalRandom.current().nextInt(min, max);
             }
         }
-        return numbersRandom;
+        return numbers;
     }
 
-    public static int enterNumberBetween() {
+    public static int enterNumberBetween(int ordinary, int bound) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             if (scanner.hasNextInt()) {
                 int number = scanner.nextInt();
-                if (number >= 0 && number < 999) {
+                if (number >= ordinary && number < bound) {
                     return number;
                 } else {
                     System.out.print("Enter a number between [1-999]: ");
@@ -234,14 +211,5 @@ public class StepArrays {
             }
             scanner.nextLine();
         }
-    }
-
-    public static int enterNumber() {
-        Scanner scanner = new Scanner(System.in);
-        while (!scanner.hasNextInt()) {
-            System.out.print("Value non valid! Enter again: ");
-            scanner.next();
-        }
-        return scanner.nextInt();
     }
 }

@@ -6,9 +6,6 @@ public class Person {
     private String city;
     private long phone;
 
-    public Person() {
-    }
-
     public Person(String name, String lastName, String city, long phone) {
         this.name = name;
         this.lastName = lastName;
@@ -46,11 +43,6 @@ public class Person {
 
     public void setPhone(long phone) {
         this.phone = phone;
-    }
-
-    public String personInfo(String name, String lastName, String city, long phone) {
-        return "Зателефонувати громадянину " + (this.name = name) + " " + (this.lastName = lastName) + " із міста " +
-                (this.city = city) + " можна за номером " + (this.phone = phone) + "\n";
     }
 
     public String personInfo() {
