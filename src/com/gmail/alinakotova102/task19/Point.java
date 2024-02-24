@@ -25,15 +25,19 @@ public class Point {
         this.x = x;
     }
 
-    public void currentCoordinates() {
-        System.out.printf("Current Coordinates: [%d][%d]\n", getX(), getY());
+    public void currentCoordinates(String name) {
+        System.out.printf("Point %s - current Coordinates: [%d][%d]\n", name, getX(), getY());
     }
 
-    public double distance(Point pointInit, Point pointFinal) {
-        int xInit = pointInit.getX();
-        int yInit = pointInit.getY();
-        int xFinal = pointFinal.getX();
-        int yFinal = pointFinal.getY();
-        return Math.sqrt((Math.pow((xFinal - xInit), 2) + (Math.pow((yFinal - yInit), 2))));
+    public double getDistance(Point point) {
+        return getDistance(getX(), getY(), point.getX(), point.getY());
+    }
+
+    public double getDistance(Point pointInit, Point pointFinal) {
+        return getDistance(pointInit.getX(), pointInit.getY(), pointFinal.getX(), pointFinal.getY());
+    }
+
+    public double getDistance(int xA, int yA, int xB, int yB) {
+        return Math.sqrt((Math.pow((xB - xA), 2) + (Math.pow((yB - yA), 2))));
     }
 }
