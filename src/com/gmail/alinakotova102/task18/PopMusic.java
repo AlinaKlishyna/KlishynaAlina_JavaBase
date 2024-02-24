@@ -1,14 +1,14 @@
 package com.gmail.alinakotova102.task18;
 
-public class PopMusic extends MusicStyles{
+public class PopMusic extends MusicStyles {
 
     public PopMusic(String group) {
-        super.group = group;
-        playMusic(group);
+        super(group);
+        playMusic();
     }
 
     @Override
-    public String playMusic(String group) {
-        return String.format("Play \"%s\"- pop music", group);
+    public String playMusic() {
+        return String.format("Play \"%s\"- pop music", super.getGroup());
     }
 }
