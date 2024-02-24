@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102;
+package com.gmail.alinakotova102.task1_12;
 
 import java.util.concurrent.ThreadLocalRandom;
 

@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102;
+package com.gmail.alinakotova102.task1_12;
 
 public class Parallelepiped {
     public static void main(String[] args) {
