@@ -4,7 +4,6 @@ public class ClassicMusic extends MusicStyles {
 
     public ClassicMusic(String group) {
         super(group);
-        playMusic();
     }
 
     @Override

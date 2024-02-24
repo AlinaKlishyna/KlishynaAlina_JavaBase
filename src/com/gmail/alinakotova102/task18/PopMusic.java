@@ -4,7 +4,6 @@ public class PopMusic extends MusicStyles {
 
     public PopMusic(String group) {
         super(group);
-        playMusic();
     }
 
     @Override
