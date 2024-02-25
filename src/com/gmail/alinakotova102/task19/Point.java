@@ -43,7 +43,7 @@ public class Point extends Object{
 
     @Override
     public boolean equals(Object o){
-        if (o == null & this == null || getClass() != o.getClass() || !(o instanceof Point)){
+        if (o == null || getClass() != o.getClass() || !(o instanceof Point)){
             return false;
         }
         if (this == o){
@@ -51,5 +51,10 @@ public class Point extends Object{
         }
         Point other = (Point) o;
         return other.getX() == this.getX() & other.getY() == this.getY();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%d; %d)",getClass().getSimpleName(), getX(), getY());
     }
 }

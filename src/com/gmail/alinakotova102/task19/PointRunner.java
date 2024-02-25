@@ -3,20 +3,23 @@ package com.gmail.alinakotova102.task19;
 public class PointRunner {
     public static void main(String[] args) {
         Point pointA = new Point(3, 5);
-
         pointA.currentCoordinates("A");
         System.out.println("Point A. Get x = " + pointA.getX());
 
-        //pointA.setX(5);
-        pointA.currentCoordinates("B");
-
-        Point pointB = new Point(5, 5);
+        Point pointB = new Point(12, 5);
+        pointB.currentCoordinates("B");
 
         System.out.println("\nDistance: ");
         System.out.println(pointA.getDistance(pointB));
         System.out.println(pointA.getDistance(pointA, pointB));
 
         System.out.println("\nCompare: ");
-        System.out.println(pointA.equals(pointB));;
+        System.out.println("Point A == Point B: " + pointA.equals(pointB));
+        System.out.println("Point B == Point A: " + pointB.equals(pointA));
+        pointA.setX(12);
+        System.out.println("Point A == Point B: " + pointA.equals(pointB));
+        System.out.println("Point A == null: " + pointA.equals(null));
+
+        System.out.println(pointA.toString());
     }
 }
