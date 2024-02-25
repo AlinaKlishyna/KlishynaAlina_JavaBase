@@ -1,6 +1,6 @@
 package com.gmail.alinakotova102.task19;
 
-public class Point extends Object{
+public class Point implements Cloneable {
     private int x;
     private int y;
 
@@ -42,11 +42,11 @@ public class Point extends Object{
     }
 
     @Override
-    public boolean equals(Object o){
-        if (o == null || getClass() != o.getClass() || !(o instanceof Point)){
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass() | !(o instanceof Point)) {
             return false;
         }
-        if (this == o){
+        if (this == o) {
             return true;
         }
         Point other = (Point) o;
@@ -55,6 +55,15 @@ public class Point extends Object{
 
     @Override
     public String toString() {
-        return String.format("%s (%d; %d)",getClass().getSimpleName(), getX(), getY());
+        return String.format("%s (%d; %d)", getClass().getSimpleName(), getX(), getY());
+    }
+
+    public Point clone() throws CloneNotSupportedException {
+        try {
+            return (Point) super.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Cloning is not possible");
+            return this;
+        }
     }
 }
