@@ -1,6 +1,6 @@
 package com.gmail.alinakotova102.task19;
 
-public class Point {
+public class Point extends Object{
     private int x;
     private int y;
 
@@ -39,5 +39,17 @@ public class Point {
 
     public double getDistance(int xA, int yA, int xB, int yB) {
         return Math.sqrt((Math.pow((xB - xA), 2) + (Math.pow((yB - yA), 2))));
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (o == null & this == null || getClass() != o.getClass() || !(o instanceof Point)){
+            return false;
+        }
+        if (this == o){
+            return true;
+        }
+        Point other = (Point) o;
+        return other.getX() == this.getX() & other.getY() == this.getY();
     }
 }

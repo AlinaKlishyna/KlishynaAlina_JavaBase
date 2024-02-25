@@ -7,13 +7,16 @@ public class PointRunner {
         pointA.currentCoordinates("A");
         System.out.println("Point A. Get x = " + pointA.getX());
 
-        pointA.setX(5);
+        //pointA.setX(5);
         pointA.currentCoordinates("B");
 
-        Point pointB = new Point(2, 6);
+        Point pointB = new Point(5, 5);
 
         System.out.println("\nDistance: ");
         System.out.println(pointA.getDistance(pointB));
         System.out.println(pointA.getDistance(pointA, pointB));
+
+        System.out.println("\nCompare: ");
+        System.out.println(pointA.equals(pointB));;
     }
 }
