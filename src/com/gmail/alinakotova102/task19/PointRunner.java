@@ -11,7 +11,8 @@ public class PointRunner {
 
         System.out.println("\nDistance: ");
         System.out.println(pointA.getDistance(pointB));
-        System.out.println(pointA.getDistance(pointA, pointB));
+        Point another = new Point(0,0);
+        System.out.println(pointA.getDistance(another, pointB));
 
         System.out.println("\nCompare: ");
         System.out.println("Point A == Point B: " + pointA.equals(pointB));

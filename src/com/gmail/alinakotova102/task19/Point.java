@@ -9,6 +9,10 @@ public class Point implements Cloneable {
         this.y = y;
     }
 
+    public Point(Point point){
+        this(point.x, point.y);
+    }
+
     public int getY() {
         return y;
     }
@@ -26,38 +30,40 @@ public class Point implements Cloneable {
     }
 
     public void currentCoordinates(String name) {
-        System.out.printf("Point %s - current Coordinates: [%d][%d]\n", name, getX(), getY());
+        System.out.printf("Point %s - current Coordinates: [%d][%d]\n", name, x, y);
     }
 
-    public double getDistance(Point point) {
-        return getDistance(getX(), getY(), point.getX(), point.getY());
+    public double getDistance(Point end) {
+        Point init = new Point(x,y);
+        return getDistance(init, end);
     }
 
-    public double getDistance(Point pointInit, Point pointFinal) {
-        return getDistance(pointInit.getX(), pointInit.getY(), pointFinal.getX(), pointFinal.getY());
-    }
-
-    public double getDistance(int xA, int yA, int xB, int yB) {
-        return Math.sqrt((Math.pow((xB - xA), 2) + (Math.pow((yB - yA), 2))));
+    public double getDistance(Point init, Point end) {
+        if (init == null || end == null){
+            System.out.println("One of the points is null!");
+            return 0.0;
+        }
+        return Math.sqrt((Math.pow((end.x - init.x), 2) + (Math.pow((end.y - init.y), 2))));
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass() | !(o instanceof Point)) {
+        if (o == null || !(o instanceof Point)) {
             return false;
         }
         if (this == o) {
             return true;
         }
         Point other = (Point) o;
-        return other.getX() == this.getX() & other.getY() == this.getY();
+        return other.x == this.x & other.y == this.y;
     }
 
     @Override
     public String toString() {
-        return String.format("%s (%d; %d)", getClass().getSimpleName(), getX(), getY());
+        return String.format("(%d; %d)", x, y);
     }
 
+    @Override
     public Point clone() throws CloneNotSupportedException {
         try {
             return (Point) super.clone();
