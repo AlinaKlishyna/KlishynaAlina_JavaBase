@@ -15,16 +15,19 @@ public class PointRunner {
         System.out.println(pointA.getDistance(another, pointB));
 
         System.out.println("\nCompare: ");
+        System.out.println("A " + pointA.toString());
+        System.out.println("B " + pointB.toString());
         System.out.println("Point A == Point B: " + pointA.equals(pointB));
         System.out.println("Point B == Point A: " + pointB.equals(pointA));
         pointA.setX(12);
+        System.out.println("A " + pointA.toString());
         System.out.println("Point A == Point B: " + pointA.equals(pointB));
         System.out.println("Point A == null: " + pointA.equals(null));
-
-        System.out.println("A " + pointA.toString());
 
         Point pointC = pointA.clone();
         System.out.println("C " + pointC.toString());
         System.out.println("Point A == Point C: " + pointA.equals(pointC));
+        System.out.println("\nHash code A: " + pointA.hashCode() + "\nHash code B: " + pointB.hashCode() +
+                "\nHash code C: " + pointC.hashCode());
     }
 }

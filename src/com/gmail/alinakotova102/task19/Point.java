@@ -47,18 +47,6 @@ public class Point implements Cloneable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || !(o instanceof Point)) {
-            return false;
-        }
-        if (this == o) {
-            return true;
-        }
-        Point other = (Point) o;
-        return other.x == this.x & other.y == this.y;
-    }
-
-    @Override
     public String toString() {
         return String.format("(%d; %d)", x, y);
     }
@@ -71,5 +59,20 @@ public class Point implements Cloneable {
             System.out.println("Cloning is not possible");
             return this;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        return x == ((Point) o).x && y == ((Point) o).y;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 31;
+        result = result + x;
+        result = result + y;
+        return result;
     }
 }
