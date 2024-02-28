@@ -6,13 +6,15 @@ public class BookRunner {
         Book y = new Book("Harry Potter");
         Book z = new Book("Harry Potter");
 
-        /**reflexive: for any non-null reference value x, x.equals(x) should return true
+        /**
+         * reflexive: for any non-null reference value x, x.equals(x) should return true
          * reflexive: для любого ненулевого ссылочного значения х, x.equals(x) должен возвратить true
          *
          * то есть то как мы переопределим equals - он всегда должен возвращать true*/
         System.out.println("reflexive: " + x.equals(x));
 
-        /**symmetric: for any non-null reference values x and y, x.equals(y) should return true if and only if
+        /**
+         * symmetric: for any non-null reference values x and y, x.equals(y) should return true if and only if
          * y.equals(x) returns true.
          * symmetric: для любого ненулевого ссылочного значения x и у, должен возвратить true и если  y.equals(x)
          * возвратить true
