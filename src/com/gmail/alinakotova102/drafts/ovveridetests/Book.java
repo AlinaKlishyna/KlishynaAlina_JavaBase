@@ -1,5 +1,7 @@
 package com.gmail.alinakotova102.drafts.ovveridetests;
 
+import java.util.Objects;
+
 public class Book {
     private String title;
 
@@ -12,5 +14,10 @@ public class Book {
         if (o == null) return false;
         if (this.getClass() != o.getClass()) return false;
         return this.title.equals(((Book) o).title);
+    }
+
+    @Override
+    public int hashCode() {
+        return title.hashCode();
     }
 }
