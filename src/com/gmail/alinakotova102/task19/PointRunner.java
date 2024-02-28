@@ -1,5 +1,7 @@
 package com.gmail.alinakotova102.task19;
 
+import static com.gmail.alinakotova102.task19.Point.getDistance;
+
 public class PointRunner {
     public static void main(String[] args) throws CloneNotSupportedException {
         Point start = new Point(3, 5);
@@ -11,8 +13,8 @@ public class PointRunner {
 
         System.out.println("\nDistance: ");
         System.out.println(start.getDistance(middle));
-        Point another = new Point(0,0);
-        System.out.println(start.getDistance(another, middle));
+        Point another = new Point(0, 0);
+        System.out.println(getDistance(another, middle));
 
         System.out.println("\nCompare: ");
         System.out.println("start " + start.toString());

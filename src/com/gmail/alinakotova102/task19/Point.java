@@ -9,7 +9,7 @@ public class Point implements Cloneable {
         this.y = y;
     }
 
-    public Point(Point point){
+    public Point(Point point) {
         this(point.x, point.y);
     }
 
@@ -34,12 +34,11 @@ public class Point implements Cloneable {
     }
 
     public double getDistance(Point end) {
-        Point init = new Point(x,y);
-        return getDistance(init, end);
+        return getDistance(this, end);
     }
 
-    public double getDistance(Point init, Point end) {
-        if (init == null || end == null){
+    public static double getDistance(Point init, Point end) {
+        if (init == null || end == null) {
             System.out.println("One of the points is null!");
             return 0.0;
         }
@@ -71,8 +70,7 @@ public class Point implements Cloneable {
     @Override
     public int hashCode() {
         int result = 31;
-        result = result + x;
-        result = result + y;
+        result = result * x + y;
         return result;
     }
 }
