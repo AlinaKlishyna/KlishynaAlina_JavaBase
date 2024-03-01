@@ -1,6 +1,6 @@
 package com.gmail.alinakotova102.task19;
 
-public class Point {
+public class Point implements Cloneable {
     private int x;
     private int y;
 
@@ -9,31 +9,70 @@ public class Point {
         this.y = y;
     }
 
-    public int getY() {
-        return y;
+    public Point(Point point) {
+        this(point.x, point.y);
     }
 
     public int getX() {
         return x;
     }
 
-    public void setY(int y) {
-        this.y = y;
-    }
-
     public void setX(int x) {
         this.x = x;
     }
 
-    public void currentCoordinates() {
-        System.out.printf("Current Coordinates: [%d][%d]\n", getX(), getY());
+    public int getY() {
+        return y;
     }
 
-    public double distance(Point pointInit, Point pointFinal) {
-        int xInit = pointInit.getX();
-        int yInit = pointInit.getY();
-        int xFinal = pointFinal.getX();
-        int yFinal = pointFinal.getY();
-        return Math.sqrt((Math.pow((xFinal - xInit), 2) + (Math.pow((yFinal - yInit), 2))));
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void currentCoordinates(String name) {
+        System.out.printf("Point %s - current Coordinates: [%d][%d]\n", name, x, y);
+    }
+
+    public double getDistance(Point end) {
+        return getDistance(this, end);
+    }
+
+    public static double getDistance(Point init, Point end) {
+        if (init == null || end == null) {
+            System.out.println("One of the points is null!");
+            return 0.0;
+        }
+        return Math.sqrt((Math.pow((end.x - init.x), 2) + (Math.pow((end.y - init.y), 2))));
+    }
+
+    @Override
+    public String toString() {
+        return String.format("(%d; %d)", x, y);
+    }
+
+    @Override
+    public Point clone() throws CloneNotSupportedException {
+        try {
+            return (Point) super.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Cloning is not possible");
+            return this;
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+        return x == ((Point) o).x && y == ((Point) o).y;
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * x + y;
     }
 }
