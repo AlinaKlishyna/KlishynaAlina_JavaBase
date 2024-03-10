@@ -8,14 +8,14 @@ public class ArraysTest {
         runAllTests();
     }
 
-    public static void runAllTests(){
+    public static void runAllTests() {
         ArraysTest arraysDemoTest = new ArraysTest();
         arraysDemoTest.averageTest();
-        arraysDemoTest.averageZeroTest();
+        arraysDemoTest.averageNullTest();
     }
 
     @Test
-    void averageTest(){
+    void averageTest() {
         int[] array = {2, 4, 6, 8};
         double actual = Arrays.average(array);
 
@@ -25,7 +25,7 @@ public class ArraysTest {
     }
 
     @Test
-    void averageZeroTest(){
+    void averageNullTest() {
         int[] arr = {};
         double actual = Arrays.average(arr);
 
@@ -33,4 +33,64 @@ public class ArraysTest {
         System.out.println("Actual value: " + actual + " - Expected: " + expected);
         Assertions.assertEquals(expected, actual);
     }
-}
+
+    @Test
+    void averageNegativeElementsTest() {
+        int[] array = {2, 4, -6, 8};
+        double actual = Arrays.average(array);
+
+        double expected = 2;
+        System.out.println("Actual value: " + actual + " - Expected: " + expected);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void averageZeroElementsTest() {
+        int[] array = {2, 4, 0, 8};
+        double actual = Arrays.average(array);
+
+        double expected = 3.5;
+        System.out.println("Actual value: " + actual + " - Expected: " + expected);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void squareTest() {
+        int[][] array = {{1, 2}, {1, 2}};
+        boolean actual = Arrays.square(array);
+
+        boolean expected = true;
+        System.out.println("Actual value: " + actual + " - Expected: " + expected);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void squareNotTest() {
+        int[][] array = {{1, 2, 3}, {1, 2, 3}};
+        boolean actual = Arrays.square(array);
+
+        boolean expected = false;
+        System.out.println("Actual value: " + actual + " - Expected: " + expected);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void squareNullTest() {
+        int[][] array = {{1, 2, 3}, {}};
+        boolean actual = Arrays.square(array);
+
+        boolean expected = false;
+        System.out.println("Actual value: " + actual + " - Expected: " + expected);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void squareAllNullTest() {
+        int[][] array = {{}, {}};
+        boolean actual = Arrays.square(array);
+
+        boolean expected = false;
+        System.out.println("Actual value: " + actual + " - Expected: " + expected);
+        Assertions.assertEquals(expected, actual);
+    }
+} 
