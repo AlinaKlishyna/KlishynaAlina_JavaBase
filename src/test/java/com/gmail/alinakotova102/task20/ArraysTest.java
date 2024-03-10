@@ -9,9 +9,9 @@ public class ArraysTest {
     }
 
     public static void runAllTests() {
-        ArraysTest arraysDemoTest = new ArraysTest();
-        arraysDemoTest.averageTest();
-        arraysDemoTest.averageNullTest();
+        ArraysTest arraysTest = new ArraysTest();
+        arraysTest.averageTest();
+        arraysTest.averageNullTest();
     }
 
     @Test
@@ -26,8 +26,8 @@ public class ArraysTest {
 
     @Test
     void averageNullTest() {
-        int[] arr = {};
-        double actual = Arrays.average(arr);
+        int[] array = {};
+        double actual = Arrays.average(array);
 
         double expected = 0.0;
         System.out.println("Actual value: " + actual + " - Expected: " + expected);
