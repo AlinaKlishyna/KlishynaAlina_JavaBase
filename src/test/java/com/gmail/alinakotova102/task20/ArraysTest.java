@@ -12,6 +12,12 @@ public class ArraysTest {
         ArraysTest arraysTest = new ArraysTest();
         arraysTest.averageTest();
         arraysTest.averageNullTest();
+        arraysTest.averageNegativeElementsTest();
+        arraysTest.averageZeroElementsTest();
+        arraysTest.squareTest();
+        arraysTest.squareNotTest();
+        arraysTest.squareNullTest();
+        arraysTest.squareAllNullTest();
     }
 
     @Test
