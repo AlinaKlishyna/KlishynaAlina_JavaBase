@@ -1,9 +1,11 @@
 package com.gmail.alinakotova102.task20;
 
 public class Arrays {
+    public static void main(String[] args) {
+
+    }
     public static double average(int[] array) {
-        if (array.length == 0) {
-            System.out.println("This is by zero!");
+        if (array == null || array.length == 0) {
             return 0.0;
         }
         int result = 0;
@@ -14,12 +16,23 @@ public class Arrays {
     }
 
     public static boolean square(int[][] array) {
-        if (array.length == 0) {
-            System.out.println("This is by zero!");
-            return false;
-        }
-        if (array.length == array[0].length) {
-            return true;
+        int j = 0;
+        if (!(array == null)) {
+            if (!(array.length == 0)) {
+                for (int i = 0; i < array.length; i++) {
+                    for (int k = 0; k < array[i].length; k++) {
+                        if (!(array[i] == null || array[i].length == 0)) {
+                            if (array.length != array[i].length) {
+                                j++;
+                            }
+                        }
+                        if (j == 0) {
+                            return true;
+                        }
+                    }
+                }
+
+            }
         }
         return false;
     }

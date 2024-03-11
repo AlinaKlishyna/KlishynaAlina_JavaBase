@@ -10,10 +10,12 @@ public class ArraysTest {
         arraysTest.averageTest();
         arraysTest.averageEmptyTest();
         arraysTest.averageNegativeElementsTest();
+        arraysTest.averageNull();
         arraysTest.squareTest();
         arraysTest.squareNotTest();
         arraysTest.squareEmptyElementTest();
         arraysTest.squareAllEmptyTest();
+        arraysTest.squareNull();
     }
 
     @Test
@@ -41,6 +43,13 @@ public class ArraysTest {
         double actual = Arrays.average(array);
 
         Assertions.assertEquals(2, actual);
+    }
+
+    @Test
+    void averageNull() {
+        double actual = Arrays.average(null);
+
+        Assertions.assertEquals(0.0, actual);
     }
 
     @Test
@@ -73,6 +82,31 @@ public class ArraysTest {
     @Test
     void squareAllEmptyTest() {
         int[][] array = {{}, {}};
+
+        boolean actual = Arrays.square(array);
+
+        Assertions.assertFalse(actual);
+    }
+
+    @Test
+    void squareNull() {
+        boolean actual = Arrays.square(null);
+
+        Assertions.assertFalse(actual);
+    }
+
+    @Test
+    void squareNullElements() {
+        int[][] array = {{1, 2}, null};
+
+        boolean actual = Arrays.square(array);
+
+        Assertions.assertFalse(actual);
+    }
+
+    @Test
+    void squareNotSquare() {
+        int[][] array = {{1, 2, 3}, {4}, {5, 6, 7}};
 
         boolean actual = Arrays.square(array);
 
