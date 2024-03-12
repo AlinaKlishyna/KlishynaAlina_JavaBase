@@ -25,7 +25,7 @@ public class Arrays {
                 }
             }
         }
-        if (j == array[0].length & j == array.length) {
+        if (j == array.length) {
             return true;
         }
         return false;
