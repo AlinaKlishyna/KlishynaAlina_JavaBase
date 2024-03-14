@@ -4,19 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ArraysTest {
-    @Test
-    public void runAllTests() {
-        ArraysTest arraysTest = new ArraysTest();
-        arraysTest.averageTest();
-        arraysTest.averageEmptyTest();
-        arraysTest.averageNegativeElementsTest();
-        arraysTest.averageNull();
-        arraysTest.squareTest();
-        arraysTest.squareNotTest();
-        arraysTest.squareEmptyElementTest();
-        arraysTest.squareAllEmptyTest();
-        arraysTest.squareNull();
-    }
 
     @Test
     void averageTest() {
