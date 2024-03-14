@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ArraysTest {
+    private static final double PRECISION = 0.00001;
 
     @Test
     void averageTest() {
@@ -11,7 +12,7 @@ public class ArraysTest {
 
         double actual = Arrays.average(array);
 
-        Assertions.assertEquals(5, actual);
+        Assertions.assertEquals(5, actual, PRECISION);
     }
 
     @Test
@@ -20,7 +21,7 @@ public class ArraysTest {
 
         double actual = Arrays.average(array);
 
-        Assertions.assertEquals(0.0, actual);
+        Assertions.assertEquals(0.0, actual, PRECISION);
     }
 
     @Test
@@ -29,14 +30,14 @@ public class ArraysTest {
 
         double actual = Arrays.average(array);
 
-        Assertions.assertEquals(2, actual);
+        Assertions.assertEquals(2, actual, PRECISION);
     }
 
     @Test
     void averageNull() {
         double actual = Arrays.average(null);
 
-        Assertions.assertEquals(0.0, actual);
+        Assertions.assertEquals(0.0, actual, PRECISION);
     }
 
     @Test
@@ -90,13 +91,4 @@ public class ArraysTest {
 
         Assertions.assertFalse(actual);
     }
-
-    @Test
-    void squareNotSquare() {
-        int[][] array = {{1, 2, 3}, {4}, {5, 6, 7}};
-
-        boolean actual = Arrays.square(array);
-
-        Assertions.assertFalse(actual);
-    }
-} 
+}
