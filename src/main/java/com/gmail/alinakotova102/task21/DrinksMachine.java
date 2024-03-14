@@ -3,17 +3,17 @@ package com.gmail.alinakotova102.task21;
 import static com.gmail.alinakotova102.task21.Drinks.UNKNOWN;
 
 public class DrinksMachine {
-    private Drinks name;
-    private static double price;
     private static int count;
     private static double totalPrice;
 
     public DrinksMachine(Drinks name) {
-        if (!(name == UNKNOWN)) {
-            this.name = name;
+        if (name != UNKNOWN) {
             totalPrice += getPrice(name);
             count++;
-            System.out.println("Drink: " + name + " - " + price + "(" + count + ")" + "\nTotal sum: " + totalPrice);
+            System.out.println("Drink: " + name + " - " + getPrice(name) + "(" + count + ")" + "\nTotal sum: " + totalPrice);
+
+        } else {
+            System.out.println("it's drink not found!");
         }
     }
 
@@ -28,26 +28,19 @@ public class DrinksMachine {
     public static double getPrice(Drinks name) {
         switch (name) {
             case COFFEE:
+                return Drinks.COFFEE.getPrice();
             case TEA:
-                price = DrinksPrice.getCAFETERIA();
-                break;
+                return Drinks.TEA.getPrice();
             case LEMONADE:
-                price = DrinksPrice.getWITHOUT_ALCOHOL();
-                break;
+                return Drinks.LEMONADE.getPrice();
             case MOJITO:
-                price = DrinksPrice.getALCOHOL();
-                break;
+                return Drinks.MOJITO.getPrice();
             case MINERAL:
-                price = DrinksPrice.getWATER();
-                break;
+                return Drinks.MINERAL.getPrice();
             case COCA_COLA:
-                price = DrinksPrice.getFLAVORED_DRINKS();
-                break;
-            case UNKNOWN:
-                price = 0.0;
-                break;
+                return Drinks.COCA_COLA.getPrice();
         }
-        return price;
+        return UNKNOWN.getPrice();
     }
 
     public static void composition(Drinks name) {
@@ -72,7 +65,6 @@ public class DrinksMachine {
                 System.out.print("Coca-cola");
                 break;
             case UNKNOWN:
-                System.out.print(" - ");
                 break;
         }
         System.out.println("\n");
