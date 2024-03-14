@@ -67,7 +67,7 @@ public class ArraysTest {
 
         boolean actual = Arrays.square(array);
 
-        Assertions.assertFalse(actual);
+        Assertions.assertTrue(actual);
     }
 
     @Test
