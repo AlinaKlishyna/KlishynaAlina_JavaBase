@@ -6,4 +6,9 @@ public class Kelvin extends Converter {
     public double temperatureConversionFromCelsius(double degreeCelsius) {
         return degreeCelsius + T0;
     }
+
+    @Override
+    double temperatureConversionToCelsius(double degreeCelsius) {
+        return 0;
+    }
 }
