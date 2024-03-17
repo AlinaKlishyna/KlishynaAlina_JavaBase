@@ -4,5 +4,7 @@ public abstract class Converter {
     protected final float T0 = 273.15F;
 
     abstract double temperatureConversionFromCelsius(double degreeCelsius);
+
+    abstract double temperatureConversionToCelsius(double degreeCelsius);
 }
 
