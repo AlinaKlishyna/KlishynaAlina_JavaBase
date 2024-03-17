@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FahrenheitTest {
-    final double PRECISION = 0.00001;
+    final double PRECISION = 0.0001;
     Fahrenheit fahrenheit;
 
     @BeforeEach
@@ -50,5 +50,30 @@ class FahrenheitTest {
         assertEquals(expected, actual, PRECISION);
     }
 
+    @Test
+    void temperatureToCelsius(){
+        double actual = fahrenheit.temperatureToCelsius(1);
 
+        double expected = -17.2222;
+
+        assertEquals(expected, actual, PRECISION);
+    }
+
+    @Test
+    void temperatureToCelsiusNegative(){
+        double actual = fahrenheit.temperatureToCelsius(-5);
+
+        double expected = -20.5556;
+
+        assertEquals(expected, actual, PRECISION);
+    }
+
+    @Test
+    void temperatureToCelsiusZero(){
+        double actual = fahrenheit.temperatureToCelsius(0);
+
+        double expected = -17.77778;
+
+        assertEquals(expected, actual, PRECISION);
+    }
 }

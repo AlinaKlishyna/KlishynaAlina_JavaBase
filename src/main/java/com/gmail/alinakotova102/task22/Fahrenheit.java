@@ -8,6 +8,6 @@ public class Fahrenheit extends Converter {
 
     @Override
     public double temperatureToCelsius(double degreeCelsius) {
-        return (degreeCelsius - 32) * 5/9;
+        return (degreeCelsius - 32) * 5.0/9;
     }
 }
