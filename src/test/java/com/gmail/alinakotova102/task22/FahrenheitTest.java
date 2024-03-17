@@ -3,7 +3,7 @@ package com.gmail.alinakotova102.task22;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FahrenheitTest {
     final double PRECISION = 0.0001;
