@@ -15,7 +15,7 @@ class FahrenheitTest {
     }
 
     @Test
-    void temperatureConversion() {
+    void temperatureFromCelsius() {
         double actual = fahrenheit.temperatureFromCelsius(10);
 
         double expected = 50;
@@ -24,7 +24,7 @@ class FahrenheitTest {
     }
 
     @Test
-    void temperatureConversionNegative() {
+    void temperatureFromCelsiusNegative() {
         double actual = fahrenheit.temperatureFromCelsius(-5);
 
         double expected = 23;
@@ -33,7 +33,7 @@ class FahrenheitTest {
     }
 
     @Test
-    void temperatureConversionZero() {
+    void temperatureFromCelsiusZero() {
         double actual = fahrenheit.temperatureFromCelsius(0);
 
         double expected = 32;
@@ -42,11 +42,13 @@ class FahrenheitTest {
     }
 
     @Test
-    void temperatureConversionFloat() {
+    void temperatureFromCelsiusFloat() {
         double actual = fahrenheit.temperatureFromCelsius(5.5);
 
         double expected = 41.9;
 
         assertEquals(expected, actual, PRECISION);
     }
+
+
 }
