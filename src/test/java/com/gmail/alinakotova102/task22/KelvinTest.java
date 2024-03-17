@@ -15,8 +15,8 @@ class KelvinTest {
     }
 
     @Test
-    void temperatureConversion() {
-        double actual = kelvin.temperatureConversion(10);
+    void temperatureConversionFromCelsius() {
+        double actual = kelvin.temperatureConversionFromCelsius(10);
 
         double expected = 283.15;
 
@@ -24,8 +24,8 @@ class KelvinTest {
     }
 
     @Test
-    void temperatureConversionNegative() {
-        double actual = kelvin.temperatureConversion(-10);
+    void temperatureConversionFromCelsiusNegative() {
+        double actual = kelvin.temperatureConversionFromCelsius(-10);
 
         double expected = 263.15;
 
