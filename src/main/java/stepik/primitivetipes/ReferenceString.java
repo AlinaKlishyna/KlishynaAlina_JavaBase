@@ -1,6 +1,6 @@
 package stepik.primitivetipes;
 
-public class Reference {
+public class ReferenceString {
     public static void main(String[] args) {
         String s1 = "Hello!"; //переменная s1 хранит ссылку в произвольном участке памяти
         String s2 = "Hello!"; //хранит в другом участке памяти не зависимо от значения
