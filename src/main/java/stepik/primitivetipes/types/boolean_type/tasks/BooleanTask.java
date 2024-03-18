@@ -1,6 +1,6 @@
-package stepik.primitivetipes;
+package stepik.primitivetipes.types.boolean_type.tasks;
 
-public class TypeBoolean {
+public class BooleanTask {
     public static void main(String[] args) {
        // Реализуйте метод, возвращающий true, если среди четырех его аргументов ровно два истинны (любые). Во всех остальных случаях метод должен возвращать false.
         System.out.println(booleanExpression(true, true, true, true));

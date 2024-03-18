@@ -1,4 +1,4 @@
-package stepik.primitivetipes;
+package stepik.primitivetipes.types.reference;
 
 public class ReferenceString {
     public static void main(String[] args) {
