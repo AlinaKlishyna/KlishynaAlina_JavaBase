@@ -1,4 +1,4 @@
-package stepik.primitivetipes.types.boolean_type.tasks;
+package stepik.primitivetipes.types.tasks;
 
 public class BooleanTask {
     public static void main(String[] args) {
