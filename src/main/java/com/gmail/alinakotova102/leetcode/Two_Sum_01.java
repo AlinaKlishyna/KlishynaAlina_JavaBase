@@ -21,16 +21,13 @@ public class Two_Sum_01 {
 //    Input: nums = [3,31, target = 6
 //    Output: [0,1]
     public int[] twoSum(int[] nums, int target) {
-        int[] result = new int[2];
         for (int i = 0; i < nums.length - 1; i++) {
-            for (int j = 0; j < result.length - 1; j++) {
-                if (nums[i] + nums[i + 1] == target) {
-                    result[j] = i;
-                    result[j + 1] = i + 1;
+            for (int j = i; j < nums.length - 1; j++) {
+                if (nums[i] + nums[j + 1] == target) {
+                    return new int[]{i, j + 1};
                 }
             }
-
         }
-        return result;
+        return null;
     }
 }

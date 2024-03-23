@@ -43,4 +43,14 @@ class Two_Sum_01Test {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("Zero values")
+    void case04() {
+        int[] actual = twoSum01.twoSum(new int[]{3, 2, 3}, 6);
+
+        int[] expected = {0, 2};
+
+        assertArrayEquals(expected, actual);
+    }
 }
