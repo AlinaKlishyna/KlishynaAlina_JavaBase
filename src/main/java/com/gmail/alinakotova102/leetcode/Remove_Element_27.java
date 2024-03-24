@@ -7,6 +7,7 @@ public class Remove_Element_27 {
         Remove_Element_27 removeElement27 = new Remove_Element_27();
         System.out.println(Arrays.toString(removeElement27.removeElement(new int[]{3, 2, 2, 3}, 3)));
         System.out.println(Arrays.toString(removeElement27.removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2)));
+        System.out.println(Arrays.toString(removeElement27.removeElement(new int[]{4,5}, 5)));
 
         //System.out.println(removeElement27.removeElement(new int[]{0,1,2,2,3,0,4,2}, 2));
 
@@ -27,26 +28,7 @@ public class Remove_Element_27 {
         int k = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != val) {
-                k++;
-            }
-        }
-        int count = 0;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i; j < nums.length - i; j++) {
-                if (nums[i] == val) {
-                    count =  nums[i];
-                    nums[i] = nums[j + i];
-                }
-            }
-        }
-
-        for (int i = count; i < nums.length; i++) {
-                for (int f = count; f< nums.length-1; f+=2) {
-                        if (nums[i] < nums[f + 1]) {
-                            int save = nums[i];
-                            nums[i] = nums[f + 1];
-                            nums[f + 1] = save;
-                        }
+                nums[k++] = nums[i];
             }
         }
         return nums;
