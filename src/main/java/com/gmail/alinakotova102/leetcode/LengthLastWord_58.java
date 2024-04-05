@@ -7,7 +7,7 @@ public class LengthLastWord_58 {
      * A word is a maximal substring consisting of non-space characters only.
      */
 
-    public static int lengthOfLastWord(String s) {
+    public int lengthOfLastWord(String s) {
         char[] newText = s.trim().toCharArray();
         int index = 0;
         for (int i = 0; i < newText.length; i++) {
