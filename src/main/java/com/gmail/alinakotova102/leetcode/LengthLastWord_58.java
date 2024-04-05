@@ -1,6 +1,11 @@
 package com.gmail.alinakotova102.leetcode;
 
 public class LengthLastWord_58 {
+    /**
+     *Given a string s consisting of words and spaces, return the length of the last word in the string.
+     *
+     * A word is a maximal substring consisting of non-space characters only.
+     */
 
     public static int lengthOfLastWord(String s) {
         char[] newText = s.trim().toCharArray();
