@@ -1,4 +1,4 @@
-package javarush.gabagecollector;
+package javarush.garbagecollector;
 
 public class Cat {
 
