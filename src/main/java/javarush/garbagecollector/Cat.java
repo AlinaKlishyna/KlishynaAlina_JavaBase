@@ -7,6 +7,8 @@ public class Cat {
 
     public Cat(String name) {
         this.name = name;
+        count++;
+        System.out.println(count);
     }
 
     public Cat() {
@@ -23,7 +25,6 @@ public class Cat {
 
     @Override
     protected void finalize() throws Throwable {
-        count++;
-        System.out.println("Объект Cat уничтожен!" + count);
+        System.out.println("Объект Cat уничтожен!" + (count--));
     }
 }
