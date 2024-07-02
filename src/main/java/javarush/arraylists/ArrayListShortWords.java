@@ -21,7 +21,7 @@ public class ArrayListShortWords {
                 min = value;
             }
         }
-        
+
         for (String value : line) {
             if (min.length() == value.length()) {
                 System.out.println(value);
