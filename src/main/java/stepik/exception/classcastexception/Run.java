@@ -1,4 +1,4 @@
-package stepik.exception;
+package stepik.exception.classcastexception;
 
 public class Run {
     public static void main(String[] args) {
