@@ -35,5 +35,8 @@ public class StreamList {
         //через map преобразовали текст в UPPERCASE
         List<String> nameUpperCase = nameList.stream().map(String::toUpperCase).toList();
         System.out.println("Через map() преобразовали в большие буквы: " + nameUpperCase);
+
+        List<String> nameFirstLetters = nameList.stream().map(s -> s.substring(0, 1)).toList();
+        System.out.println("Первые буквы через map() и substring(0, 1): " + nameFirstLetters);
     }
 }
