@@ -25,5 +25,8 @@ public class Array {
         }
 
         System.out.println(Arrays.toString(numbers) + " - max: " + numbers[0] + " min: " + numbers[numbers.length-1]);
+
+        int[] num = Arrays.stream(Arrays.stream(new int[] {3,5,2,14,4}).toArray()).sorted().toArray();
+        System.out.println(Arrays.toString(num));
     }
 }
