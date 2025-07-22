@@ -1,7 +1,5 @@
 package com.gmail.alinakotova102.corsoRanstad.list;
 
-import com.gmail.alinakotova102.corsoRanstad.Array;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -65,18 +63,23 @@ public class ListNames {
         // Creare una lista da un array
         List<String> listDaArray = List.of(new String[]{"a", "b", "c"});
 
-        // Trovare l’indice di un elemento
+        // Trovare l’indice di un elemento - 1 modo
         for (int i = 0; i < nomi.size(); i++) {
             if (nomi.get(i).equals("Bea"))
                 System.out.println(i);
         }
+
+        // Trovare l’indice di un elemento - 2 modo
+        System.out.println(nomi.indexOf("Bea"));
 
         // Verificare se due liste sono uguali
         List<String> nomiCopia = List.of("Marco", "Luca", "Bea", "Anna");
         System.out.println(nomi.equals(nomiCopia));
 
         // Copiare una lista in un’altra
-        List<String> newList = nomiCopia;
+        //Здесь newList не является настоящей независимой копией , а представляет собой ссылку на тот же список.
+        //List<String> newList = nomiCopia;
+        List<String> newList = new ArrayList<>(nomiCopia); //лучше єто использовать
 
         // Trasformare una lista in array
         String[] nomiArray = new String[newList.size()];
