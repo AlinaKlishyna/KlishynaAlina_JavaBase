@@ -1,4 +1,4 @@
-package javarush.arraylists;
+package javarush.list.arraylists;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -1,4 +1,4 @@
-package javarush.arraylists;
+package javarush.list.arraylists;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
