@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad.introduzione_metodi_parametri.sezione_2_metodi_return;
+package com.gmail.alinakotova102.corsoRanstad.introduzione_metodi_parametri.sezione2_metodi_return;
 
 public class Runner {
     public static void main(String[] args) {
