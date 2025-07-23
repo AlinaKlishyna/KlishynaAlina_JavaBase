@@ -6,6 +6,7 @@ public class Runner {
         saluta("Nicolo");
         stampaSomma(3, 5);
         stampaTabellina(2);
+        stampaQuadrato(3);
     }
 
     public static void stampaTabellina(int n) {
@@ -15,7 +16,7 @@ public class Runner {
     }
 
     public static void stampaQuadrato(int n) {
-        System.out.println(Math.pow(n, 2));
+        System.out.println((int) Math.pow(n, 2));
     }
 
     public static void stampaSomma(int a, int b) {
