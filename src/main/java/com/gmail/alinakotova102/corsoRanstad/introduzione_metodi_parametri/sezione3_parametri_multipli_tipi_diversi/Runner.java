@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad.introduzione_metodi_parametri.sezione3_Parametri_multipli_tipi_diversi;
+package com.gmail.alinakotova102.corsoRanstad.introduzione_metodi_parametri.sezione3_parametri_multipli_tipi_diversi;
 
 public class Runner {
     public static void main(String[] args) {
