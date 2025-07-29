@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad.polimorfismo.ovveride;
+package com.gmail.alinakotova102.corsoRanstad.polimorfismo.ovveride.esercizi_base;
 
 public class Animale {
     void faVerso() {
