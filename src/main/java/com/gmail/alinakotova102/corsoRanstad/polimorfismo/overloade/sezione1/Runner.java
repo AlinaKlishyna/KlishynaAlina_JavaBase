@@ -1,6 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad.overloading.sezione1;
-
-import java.util.logging.SimpleFormatter;
+package com.gmail.alinakotova102.corsoRanstad.polimorfismo.overloade.sezione1;
 
 public class Runner {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad.overloading.sezione2;
+package com.gmail.alinakotova102.corsoRanstad.polimorfismo.overloade.sezione2;
 
 public class Prodotto {
     private String name;
