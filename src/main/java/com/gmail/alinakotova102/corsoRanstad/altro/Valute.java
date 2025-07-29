@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad;
+package com.gmail.alinakotova102.corsoRanstad.altro;
 
 import java.util.Scanner;
 

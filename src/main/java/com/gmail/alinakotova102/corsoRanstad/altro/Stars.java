@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad;
+package com.gmail.alinakotova102.corsoRanstad.altro;
 
 public class Stars {
     public static void main(String[] args) {
