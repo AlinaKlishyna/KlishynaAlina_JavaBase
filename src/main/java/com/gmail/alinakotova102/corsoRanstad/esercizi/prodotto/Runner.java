@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad.prodotto;
+package com.gmail.alinakotova102.corsoRanstad.esercizi.prodotto;
 
 import java.util.Scanner;
 

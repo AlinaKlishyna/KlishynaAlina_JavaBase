@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad.netto;
+package com.gmail.alinakotova102.corsoRanstad.esercizi.netto;
 
 public class Reddito {
     /*
