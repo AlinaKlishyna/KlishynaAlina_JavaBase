@@ -7,34 +7,66 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
-        String pathToFile = "/Users/anonimka/Desktop/Java/Projects/KlishynaAlina_JavaBase/src/main/java/com/gmail/alinakotova102/corsoRanstad/file/input.txt";
+        String pathToRead = "/Users/anonimka/Desktop/Java/Projects/KlishynaAlina_JavaBase/src/main/java/com/gmail/alinakotova102/corsoRanstad/file/input.txt";
         String pathToWrite = "/Users/anonimka/Desktop/Java/Projects/KlishynaAlina_JavaBase/src/main/java/com/gmail/alinakotova102/corsoRanstad/file/output.txt";
-        //System.out.println(readFile(pathToFile));
+        //System.out.println(readFile(pathToRead));
 
         //writeFile("Benvenuto nel corso Java", pathToWrite);
         //writeFile(":)", pathToWrite);
 
-        //lineByLine(pathToFile);
-        //System.out.println("Total number of words: " + sumNumbersByFile(pathToFile));
+        //lineByLine(pathToRead);
+        //System.out.println("Total number of words: " + sumNumbersByFile(pathToRead));
 
         //writeByScanner(pathToWrite);
 
-        //System.out.println(countWord("Java", pathToFile));
+        //System.out.println(countWord("Java", pathToRead));
 
         //System.out.println(openFileByScanner());
 
         //removeFile("/Users/anonimka/Desktop/Java/Projects/KlishynaAlina_JavaBase/src/main/java/com/gmail/alinakotova102/corsoRanstad/file/example.txt");
 
-        // createFileUpperCase(pathToFile);
+        // createFileUpperCase(pathToRead);
+
+        //displayLineWithNumber(pathToRead);
+
+        createFileUnify(pathToRead, pathToWrite);
     }
 
+    public static void createFileUnify(String pathFirst, String pathSecond) {
+        String textByFirst = readFile(pathFirst);
+        String textBySecond = readFile(pathSecond);
 
-    
+        try {
+            FileWriter writer = new FileWriter("/Users/anonimka/Desktop/Java/Projects" +
+                    "/KlishynaAlina_JavaBase/src/main/java/com/gmail/alinakotova102/corsoRanstad/file/fileTogether.txt", true);
+            writer.write(textByFirst);
+            writer.write(textBySecond);
+            writer.close(); // always write!
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void displayLineWithNumber(String path) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))){
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                for (char symbol : line.toCharArray()) {
+                   if (Character.isDigit(symbol)) {
+                       System.out.println(line);
+                       break;
+                   }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void createFileUpperCase(String path) {
-       String textByFile = readFile(path);
+        String textByFile = readFile(path);
 
-       File file = new File("/Users/anonimka/Desktop/Java/Projects/KlishynaAlina_JavaBase/src/main/java/com/gmail/alinakotova102/corsoRanstad/file/newFile.txt");
+        File file = new File("/Users/anonimka/Desktop/Java/Projects/KlishynaAlina_JavaBase/src/main/java/com/gmail/alinakotova102/corsoRanstad/file/newFile.txt");
         try {
             if (file.createNewFile()) {
                 System.out.println("File created! " + file.getAbsolutePath());
@@ -53,7 +85,6 @@ public class Runner {
             throw new RuntimeException(e);
         }
     }
-
 
 
     public static boolean removeFile(String path) {

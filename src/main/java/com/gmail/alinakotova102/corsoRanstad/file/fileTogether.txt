@@ -1,0 +1,37 @@
+Why I love Java
+Java is unarguably one of the most popular programming languages in the world today. Companies like Google, Amazon and Netflix -- to name a few big names -- are using Java to build large portions of their infrastructure and backend services. But despite its huge popularity (or perhaps because of it) Java's reputation among programmers is something of a mixed bag. Some seem to genuinely like it while others hate it.
+Personally, as someone who has been using the language for more than a decade professionally, I find it to be an excellent language. No, it isn't perfect. And the programming world -- being young as it is -- is still learning from its own mistakes. But all other things being equal I think that Java got a lot more right than wrong.
+Following are some of the things I think Java got right:
+It's a productive language
+
+As a programmer I get paid to solve problems. In minimum time and maximum quality. My software is expected to be robust (bug free), performant and maintainable (easily extended). I typically write large, distributed and fairly complex server-side software.
+Java is a purely Object Oriented language. To the uninitiated, this means that you design your code around unit of codes called "objects" which loosely resemble real-world object (or concepts). So if you were to write, say, a library management software you'll most likely have these code objects representing books, members, staff but also more abstract concepts such as genre and loan.
+This happens to be a very neat way to organize software (and your thoughts). Instead of thinking about your system as a big line-by-line, step-by-step algorithm, you think of it as a set of interacting objects. If done right, each one of these objects can be reasoned about independently from other objects. Each object can be tested in isolation from others and each one can be extended without necessarily affecting the entire system.
+Java did not invent the idea of Object Oriented Programming. In fact OOP dates back to the late 60's, but the Java language designers did a great job implementing the idea in the language in such a way that it is practical and productive for the programmer.
+
+The Java Virtual Machine
+One of Java's most convenient features is the Java Virtual Machine (or JVM). The JVM essentially acts as the translator between your Java code and the particular operating system that your code is running on. This is the origin of the once-famous Java marketing slogan "write once, run anywhere". Without the JVM, you'd have to compile your code for every operating system separately. the JVM guarantees that your Java code runs identically on Linux, Mac or Windows.
+The Java language designers also envisioned a world where other languages can execute on the JVM besides Java. To that end they've specified a low-level language (called "bytecode") which is the language that Java complies into and the stuff that actually gets executed on the JVM. Today there are dozens of languages targeting the JVM as a result.
+
+Automatic Memory Management
+If you ever used a language such as C or C++ then you are intimately familiar with the painstaking effort involved in manually managing memory allocation (and deallocations) in your programs. This is an area, so rife with bugs that the designers of the Java Programming Language decided to do away with it completely. Rather than giving the programmer the opportunity to shoot themselves in the foot they decided to let Java do all the memory management for them -- automatically.
+In Java, the programmer simply creates whatever objects they need (without explicitly worrying about allocating memory for it) and Java will automatically reclaim that memory once the object is no longer used by the program.
+Standing on the shoulders of giants
+Java was designed and implemented by some of the brightest people in the Computer Science world. People such a Doug Steele, Joshua Bloch, Mark Reinhold and Brian Goetz are true masters of their craft and are a constant source of inspiration and learning for me. Not just about Java per se, but more importantly, about writing better software in general.
+Huge community
+As of this writing, according to Wikipedia, there are 9 million Java developers around the world. This is a huge advantage because for just about every problem you run into as a developer there is a high likelihood that someone, somewhere had already solved a variation of this problem or that very same problem. Usually a simple online search will reveal multiple sources that can be used to solve or at the very least approach the problem.
+
+Fantastic frameworks & libraries
+Java has an enormous array of frameworks and libraries to choose from. From logging, to web development, to database connectivity, to messaging clients, there's a library (or several) to help solve just about any problem. A particular favorite of mine is the Spring Framework which had become the defacto framework for any sort of work involving web (HTTP) technologies.
+Writing web application using "raw" Java would be a tedious task, to say the least. Moreover, the designers of Spring noticed that many programmers are trying to solve the same (or very similar) problems and each one is solving these problems slightly differently. Spring (and its vast portfolio of sub-projects) are meant to give the programmer a leg-up by giving them a solid set of building blocks to build upon for their projects.
+Closing thoughts
+There are many fine languages to choose from out there. Java is just one of them. This article is in no way trying to claim that "Java is the best" or that "Java is better than X language". It is simply meant as an acknowledgement to the fine work that made Java possible.
+
+1991 – 1994: The Green Project, Oak Prototype, Shift In Focus & Renaming | History Of Java
+1991: Initiated as the Green Project at Sun Microsystems by James Gosling, Mike Sheridan, and Patrick Naughton. The aim was to develop a language for small, embedded devices/ small electrical devices.
+1992: The first prototype, called Oak, was developed, named after an oak tree outside Gosling's office.
+1994: Realizing the potential of the burgeoning internet, the team refocused on creating a language for web-based applications. Around the same time, the language Oak was renamed Java to avoid trademark issues.Lol
+Bibby
+Pop
+Vova
+Zhenya
