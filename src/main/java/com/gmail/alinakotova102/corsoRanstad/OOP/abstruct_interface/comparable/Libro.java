@@ -1,4 +1,4 @@
-package com.gmail.alinakotova102.corsoRanstad.OOP.abstruct_interface;
+package com.gmail.alinakotova102.corsoRanstad.OOP.abstruct_interface.comparable;
 
 public class Libro implements Comparable<Libro>{
     private String titolo;
