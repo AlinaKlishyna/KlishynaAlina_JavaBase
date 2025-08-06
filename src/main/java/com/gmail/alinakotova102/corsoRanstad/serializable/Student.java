@@ -3,11 +3,11 @@ package com.gmail.alinakotova102.corsoRanstad.serializable;
 import java.io.*;
 
 public class Student implements Serializable {
-    private static final long serialVersion = 1L;
+    private static final long serialVersionUID = 1L;
 
     private String name;
     private int age;
-    private int grade;
+    transient private int grade;
 
     public Student(String name, int age, int grade) {
         this.name = name;
