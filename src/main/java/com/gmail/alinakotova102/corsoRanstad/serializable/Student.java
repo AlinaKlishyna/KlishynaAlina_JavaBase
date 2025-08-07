@@ -54,9 +54,13 @@ class Runner {
 
         //DESERIALIZATION (object recovery)
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(pathFileSave))) {
-            Student studentByFile = (Student) in.readObject(); //reading
-            System.out.println(studentByFile);
-        } catch (IOException | ClassNotFoundException e) {
+            Object object = in.readObject(); //reading
+            if (object instanceof Student) {
+                Student studentByFile = (Student) object;
+                System.out.println(studentByFile);
+            }
+
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
