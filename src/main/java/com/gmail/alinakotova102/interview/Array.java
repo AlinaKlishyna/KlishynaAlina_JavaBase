@@ -26,19 +26,15 @@ public class Array {
 
     public static int dominantIndex(int[] nums) {
         int max = nums[0];
-        for (int num : nums) {
-            if (num>max) {
-                max = num;
-            }
-        }
-        System.out.println("Max number: " + max);
-
         int maxIndex = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (max == nums[i]) {
+            if (max < nums[i]) {
+                max = nums[i];
                 maxIndex = i;
             }
         }
+
+        System.out.println("Max number: " + max);
         System.out.println("Max Index: " + maxIndex);
 
         boolean dominant = true;
