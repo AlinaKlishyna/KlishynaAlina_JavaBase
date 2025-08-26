@@ -1,5 +1,6 @@
 package com.gmail.alinakotova102.interview;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class Array {
@@ -21,8 +22,24 @@ public class Array {
         System.out.println("{1,2,3,4} dominant index --> " + dominantIndex(new int[]{1, 2, 3, 4}));
         System.out.println("{1,0} dominant index --> " + dominantIndex(new int[]{1, 0}));
         System.out.println("{0,0,1,2} dominant index --> " + dominantIndex(new int[]{0, 0, 1, 2}));
+
+        System.out.println("{9,9,9} plus one -->" + Arrays.toString(plusOne(new int[]{9,9,9})));
+        System.out.println("{9,9,9,8} plus one -->" + Arrays.toString(plusOne(new int[]{9,9,9,8})));
     }
 
+    public static int[] plusOne(int[] digits) {
+        String string =new String();
+        for (int num : digits) {
+            string+=num;
+        }
+        string = String.valueOf(Long.valueOf(string)+1);
+
+        int[] numbers = new int[string.length()];
+        for (int i = 0; i<string.length();i++) {
+            numbers[i] = Integer.parseInt(String.valueOf(string.charAt(i)));
+        }
+        return numbers;
+    }
 
     public static int dominantIndex(int[] nums) {
         int max = nums[0];
