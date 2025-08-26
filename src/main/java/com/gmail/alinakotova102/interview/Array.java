@@ -1,7 +1,6 @@
 package com.gmail.alinakotova102.interview;
 
-import java.math.BigInteger;
-import java.util.Arrays;
+import java.util.*;
 
 public class Array {
     public static void main(String[] args) {
@@ -33,6 +32,52 @@ public class Array {
         System.out.println("is palindrome? 121 --> " + isPalindrome(121));
 
         System.out.println(Arrays.toString(twoSum(new int[]{3,3}, 6)));
+        System.out.println("----" + Arrays.toString(removeDuplicate(new int[]{1,1,2})));
+
+        System.out.println(Arrays.toString(removeDuplicateSecond(new int[]{0,1,1,2,2,3})));
+        System.out.println(Arrays.toString(removeDuplicateSecond(new int[]{0,1,2,2,3,3,4,4,4,5,5,6})));
+        System.out.println(removeDuplicateThird(new int[]{1,1,2}));
+    }
+
+    public static int removeDuplicateThird(int[] nums) {
+        int j = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[j-1]) {
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+
+        return j;
+    }
+
+    // Input: nums = [1,1,2]
+    // Output: 2, nums = [1,2,_]
+    public static int[] removeDuplicateSecond(int[] nums) {
+        int[] result = new int[nums.length];
+        result[0] = nums[0];
+
+        int index = 1;
+        for (int num : nums) {
+            if (result[index-1]<num) {
+                result[index++] = num;
+            }
+        }
+        return result;
+    }
+
+    public static int[] removeDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet();
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        int[] res = new int[set.size()];
+        int index = 0;
+        for (int num : set) {
+            res[index++] = num;
+        }
+        return res;
     }
 
     public static int[] twoSum(int[] nums, int target) {
