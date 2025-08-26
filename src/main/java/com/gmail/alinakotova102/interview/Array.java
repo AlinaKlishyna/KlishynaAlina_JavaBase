@@ -23,19 +23,84 @@ public class Array {
         System.out.println("{1,0} dominant index --> " + dominantIndex(new int[]{1, 0}));
         System.out.println("{0,0,1,2} dominant index --> " + dominantIndex(new int[]{0, 0, 1, 2}));
 
-        System.out.println("{9,9,9} plus one -->" + Arrays.toString(plusOne(new int[]{9,9,9})));
-        System.out.println("{9,9,9,8} plus one -->" + Arrays.toString(plusOne(new int[]{9,9,9,8})));
+        System.out.println("{9,9,9} plus one -->" + Arrays.toString(plusOne(new int[]{9, 9, 9})));
+        System.out.println("{9,9,9,8} plus one -->" + Arrays.toString(plusOne(new int[]{9, 9, 9, 8})));
+        reverseOther(1233);
+
+        System.out.println("12345 reverse--> " + reverse(12345));
+
+        System.out.println("is palindrome? -121 --> " + isPalindrome(-121));
+        System.out.println("is palindrome? 121 --> " + isPalindrome(121));
+
+        System.out.println(Arrays.toString(twoSum(new int[]{3,3}, 6)));
+    }
+
+    public static int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        for(int i = 0; i<nums.length; i++) {
+            for(int j = 0; j<nums.length-1; j++) {
+                if(nums[i] + nums[j+1] == target) {
+                    result[0] = i;
+                    result[1] = j+1;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static boolean isPalindrome(int x) {
+        var digit = 0;
+        var reverse = 0;
+        int save = x;
+        while(x!=0) {
+            digit = x % 10;
+            reverse = reverse * 10 + digit;
+            x = x / 10;
+        }
+
+        System.out.println(reverse);
+        System.out.println(save);
+
+        return save==reverse;
+    }
+
+    public static int reverse(int num) {
+        var result = 0L;
+        var digit = 0;
+
+        while (num != 0) {
+            digit = num % 10; // take the last number
+            result = result * 10 + digit; // add digit
+            num = num / 10; //remove the last number
+        }
+        return (int) result;
+    }
+
+    public static int reverseOther(int num) {
+        String[] strs = String.valueOf(Math.abs(num)).split("");
+        int index = strs.length - 1;
+        String[] res = new String[strs.length];
+        for (String str : strs) {
+            res[index--] = str;
+        }
+        String r = "";
+        for (String rs : res) {
+            r += rs;
+        }
+        int result = Integer.parseInt(r);
+        return num > 0 ? result : Math.negateExact(result);
     }
 
     public static int[] plusOne(int[] digits) {
-        String string =new String();
+        String string = new String();
         for (int num : digits) {
-            string+=num;
+            string += num;
         }
-        string = String.valueOf(Long.valueOf(string)+1);
+        string = String.valueOf(Long.valueOf(string) + 1);
 
         int[] numbers = new int[string.length()];
-        for (int i = 0; i<string.length();i++) {
+        for (int i = 0; i < string.length(); i++) {
             numbers[i] = Integer.parseInt(String.valueOf(string.charAt(i)));
         }
         return numbers;
