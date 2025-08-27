@@ -1,5 +1,6 @@
 package com.gmail.alinakotova102.interview;
 
+import java.math.BigInteger;
 import java.util.*;
 
 public class Array {
@@ -7,7 +8,6 @@ public class Array {
         System.out.println("{3,7,0,2,0} --> " + Arrays.toString(moveZero(new int[]{3, 7, 0, 2, 0})));
         System.out.println("{3,7,0,2,0} sort bubble personal --> " + Arrays.toString(bubbleSortPersonal(new int[]{3, 7, 0, 2, 0})));
         System.out.println("{3,7,0,2,0} sort bubble --> " + Arrays.toString(bubbleSort(new int[]{3, 7, 0, 2, 0})));
-
         //Input: nums = [3,6,1,0]
         //Output: 1
         //Explanation: 6 is the largest integer.
@@ -40,6 +40,12 @@ public class Array {
         System.out.println(Arrays.toString(twoSumOther(new int[]{2,1,7,11,15}, 9)));
 
         System.out.println("a#bc#d буква#--> " + backspace("a#bc#d"));
+
+        System.out.println(addStrings("22", "22"));
+    }
+
+    public static String addStrings(String num1, String num2) {
+        return String.valueOf(new BigInteger(num1).add(new BigInteger(num2)));
     }
 
     // допустим есть строка a#bc#d --> bd
