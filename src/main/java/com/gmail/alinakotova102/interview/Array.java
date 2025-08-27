@@ -37,7 +37,18 @@ public class Array {
         System.out.println(Arrays.toString(removeDuplicateSecond(new int[]{0,1,1,2,2,3})));
         System.out.println(Arrays.toString(removeDuplicateSecond(new int[]{0,1,2,2,3,3,4,4,4,5,5,6})));
         System.out.println(removeDuplicateThird(new int[]{1,1,2}));
-        System.out.println(Arrays.toString(twoSumOther(new int[]{2,1,7,11,15}, 9)));;
+        System.out.println(Arrays.toString(twoSumOther(new int[]{2,1,7,11,15}, 9)));
+
+        System.out.println("a#bc#d буква#--> " + backspace("a#bc#d"));
+    }
+
+    // допустим есть строка a#bc#d --> bd
+    public static String backspace(String example) {
+        String result = "";
+        for (String line : example.split("\\w#+")) {
+            result+=line;
+        }
+        return result;
     }
 
     public static int[] twoSumOther(int[] nums, int target) {
