@@ -24,9 +24,9 @@ public class Array {
 
         System.out.println("{9,9,9} plus one -->" + Arrays.toString(plusOne(new int[]{9, 9, 9})));
         System.out.println("{9,9,9,8} plus one -->" + Arrays.toString(plusOne(new int[]{9, 9, 9, 8})));
-        reverseOther(1233);
 
         System.out.println("12345 reverse--> " + reverse(12345));
+        System.out.println("12345 reverse %2--> " + reverseSecond(12345));
 
         System.out.println("is palindrome? -121 --> " + isPalindrome(-121));
         System.out.println("is palindrome? 121 --> " + isPalindrome(121));
@@ -37,6 +37,20 @@ public class Array {
         System.out.println(Arrays.toString(removeDuplicateSecond(new int[]{0,1,1,2,2,3})));
         System.out.println(Arrays.toString(removeDuplicateSecond(new int[]{0,1,2,2,3,3,4,4,4,5,5,6})));
         System.out.println(removeDuplicateThird(new int[]{1,1,2}));
+        System.out.println(Arrays.toString(twoSumOther(new int[]{2,1,7,11,15}, 9)));;
+    }
+
+    public static int[] twoSumOther(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int difference = target - nums[i];
+            if (map.get(difference) != null) {
+                return new int[]{map.get(difference), i};
+            }
+
+            map.put(nums[i], i);
+        }
+        return nums;
     }
 
     public static int removeDuplicateThird(int[] nums) {
@@ -122,7 +136,7 @@ public class Array {
         return (int) result;
     }
 
-    public static int reverseOther(int num) {
+    public static int reverseSecond(int num) {
         String[] strs = String.valueOf(Math.abs(num)).split("");
         int index = strs.length - 1;
         String[] res = new String[strs.length];
