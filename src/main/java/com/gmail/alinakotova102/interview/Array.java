@@ -2,6 +2,8 @@ package com.gmail.alinakotova102.interview;
 
 import java.math.BigInteger;
 import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Array {
     public static void main(String[] args) {
@@ -43,7 +45,32 @@ public class Array {
 
         System.out.println(addStrings("22", "22"));
 
-        System.out.println("3, 44, 23, 11, 0, 1, 2, 6, 1, 0 --> " + Arrays.toString(bubbleSortOther(new int[]{3, 44, 23, 11, 0, 1, 2, 6, 1, 0})));
+        System.out.println("3, 44, 23, 11, 0, 1, 2, 6, 1, 0 --> " +
+                Arrays.toString(bubbleSortOther(new int[]{3, 44, 23, 11, 0, 1, 2, 6, 1, 0})));
+
+        System.out.println(Arrays.toString(merge(new int[]{2,3,4}, new int[]{6,7,8})));
+        System.out.println(Arrays.toString(mergeSorted(new int[]{5,2,7}, new int[]{3,1,2})));
+    }
+
+    public static int[] mergeSorted(int[] a, int[] b) {
+        return IntStream.concat(Arrays.stream(a), Arrays.stream(b)).sorted().toArray();
+    }
+
+    public static int[] merge(int[] a, int[] b) {
+        int[] result = new int[a.length + b.length];
+
+        for (int i = 0; i < result.length; i++) {
+            for (int aNum : a) {
+                result[i] = aNum;
+                i++;
+            }
+
+            for (int bNum : b) {
+                result[i] = bNum;
+                i++;
+            }
+        }
+        return result;
     }
 
     public static int[] bubbleSortOther(int[] nums){
