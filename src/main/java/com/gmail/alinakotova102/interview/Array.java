@@ -42,6 +42,24 @@ public class Array {
         System.out.println("a#bc#d буква#--> " + backspace("a#bc#d"));
 
         System.out.println(addStrings("22", "22"));
+
+        System.out.println("3, 44, 23, 11, 0, 1, 2, 6, 1, 0 --> " + Arrays.toString(bubbleSortOther(new int[]{3, 44, 23, 11, 0, 1, 2, 6, 1, 0})));
+    }
+
+    public static int[] bubbleSortOther(int[] nums){
+        boolean swap = false;
+        while (!swap) {
+            swap = true;
+            for (int i = 0; i < nums.length-1; i++) {
+                if (nums[i]>nums[i+1]) {
+                    int save = nums[i];
+                    nums[i] = nums[i+1];
+                    nums[i+1] = save;
+                    swap = false;
+                }
+            }
+        }
+        return nums;
     }
 
     public static String addStrings(String num1, String num2) {
