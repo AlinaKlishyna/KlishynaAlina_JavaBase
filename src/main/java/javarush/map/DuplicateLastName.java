@@ -19,15 +19,24 @@ public class DuplicateLastName {
         map.put("Stanislav","Lysiak");
         map.put("Jenya","Klishyn");
         map.put("Ramil","Klishyn");
+        map.put("Ramil","Fdd");
         return map;
     }
 
     public static void removeTheLastNameDuplicates(Map<String, String> map) {
         //напишите тут ваш код
-        Set<String> unique = new HashSet<>(map.values());
+        Set<String> unique = new HashSet<>();
         Set<String> duplicate = new HashSet<>();
 
-        map.entrySet().removeIf(entry -> !entry.getValue().equals(unique));
+        for (Map.Entry<String, String> item : map.entrySet()) {
+            if (!unique.add(item.getValue())) {
+                duplicate.add(item.getValue());
+            }
+        }
+
+        for (String lastname : duplicate) {
+            removeItemFromMapByValue(map, lastname);
+        }
     }
 
     public static void removeItemFromMapByValue(Map<String, String> map, String value) {
