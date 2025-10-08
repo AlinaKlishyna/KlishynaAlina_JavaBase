@@ -1,0 +1,36 @@
+окт. 08, 2025 1:25:42 AM stepik.logging.LogDemo main
+SEVERE: Переданный аргумент не может быть передан!
+java.lang.NumberFormatException: For input string: "f"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:588)
+	at java.base/java.lang.Integer.parseInt(Integer.java:685)
+	at stepik.logging.LogDemo.main(LogDemo.java:11)
+
+окт. 08, 2025 1:25:42 AM stepik.logging.LogDemo divide
+FINE: Операция 0/null
+окт. 08, 2025 1:25:42 AM stepik.logging.LogDemo divide
+WARNING: Что-то пошло не так!
+окт. 08, 2025 1:25:42 AM stepik.logging.LogDemo divide
+FINE: Успешно выполнено!
+окт. 08, 2025 1:25:42 AM stepik.logging.LogDemo divide
+FINE: Операция 0/5
+окт. 08, 2025 1:25:42 AM stepik.logging.LogDemo divide
+FINE: Успешно выполнено!
+окт. 08, 2025 1:43:31 AM stepik.logging.LogDemo main
+SEVERE: Переданный аргумент не может быть передан!
+java.lang.NumberFormatException: For input string: "f"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:588)
+	at java.base/java.lang.Integer.parseInt(Integer.java:685)
+	at stepik.logging.LogDemo.main(LogDemo.java:11)
+
+окт. 08, 2025 1:43:31 AM stepik.logging.LogDemo divide
+FINE: Операция 0/null
+окт. 08, 2025 1:43:31 AM stepik.logging.LogDemo divide
+WARNING: Что-то пошло не так!
+окт. 08, 2025 1:43:31 AM stepik.logging.LogDemo divide
+FINE: Успешно выполнено!
+окт. 08, 2025 1:43:31 AM stepik.logging.LogDemo divide
+FINE: Операция 0/5
+окт. 08, 2025 1:43:31 AM stepik.logging.LogDemo divide
+FINE: Успешно выполнено!
